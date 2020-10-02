@@ -16,7 +16,6 @@
 | /api/articles/:id/edit     | PUT    | Edit Article Content                  |
 | /api/articles/:id/delete   | DELETE | Delete an Entire Article              |
 | /api/articles/:id/comments | GET    | Retrieves all Comments for an Article |
-
 | /api/users              | GET    | Returns list of all Users in DB    |
 | /api/users/new          | POST   | Post a new user to DB              |
 | /api/users/:id          | GET    | Lookup Users by ID                  |
@@ -24,7 +23,7 @@
 | /api/users/:id/delete   | DELETE | Delete a User by id             |
 | /api/users/:id/comments | GET    | Retrieves all Comments for Users |
 
-| Frontend Endpoints               | Template                                |
+| Frontend Endpoints      | Method        | Template                                |
 | ---------------------- | ------ | ------------------------------------- |
 | /                      | GET    | auth ? logged-in-homepage.pug : splash.pug   |
 | /articles/new          | GET    | create-article.pug              |
@@ -39,21 +38,35 @@
 ---
 
 ## **Templates**
-navigation.pug
-homepage.pug (need a route later if we want this feature)
-logged-in-homepage.pug
-sign-in.pug
-create-user.pug
-profile-page.pug
-create-article.pug
-display-article.pug
-comments.pug
-splash.pug
+- navigation.pug
 
-//bonuses
-search-results.pug
-display-users-article-list.pug
-bookmark-list.pug
+- homepage.pug (need a route later if we want this feature)
+
+- logged-in-homepage.pug
+
+- sign-in.pug
+
+- create-user.pug
+
+- profile-page.pug
+
+- create-article.pug
+
+- display-article.pug
+
+- comments.pug
+
+- splash.pug
+
+
+### Bonus Templates
+
+- search-results.pug
+
+- display-users-article-list.pug
+
+- bookmark-list.pug
+
 
 ## **Templates**
 
