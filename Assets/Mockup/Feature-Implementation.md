@@ -1,0 +1,2 @@
+- Accounts
+    - When a user clicks the sign up button, there will be a route handler that is called. 
