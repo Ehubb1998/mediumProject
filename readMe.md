@@ -1,7 +1,6 @@
 # **Recreate Medium Project**
 
-## **Link to live site**
-  -
+## **Live Site Coming Soon!**
 
 ## **About**
 
@@ -11,61 +10,64 @@ _Team BABE's first FullStack Group Project recreating the popular website Medium
 
 **Members**
 
-**`B`** onnie
+**`B`** onnie Hardie
 
-**`A`** lycia
+**`A`** lycia Wang
 
-**`B`** eau
+**`B`** eau Kenny
 
-**`E`** lijah
+**`E`** lijah Hubbard
 
 ---
 
 ## **Brief Explanation of What The App Is and Does**
-  - This is dediated to all the blog lovers out there! BABE is a web application inspired by [Medium](https://medium.com/). When you first come the page as a logged out user, you're able to search and read articles about a topic. Once you log in, you're abe to follow other users. Like and comment on different articles and best of all, save them in your own personal reading list.  
 
-------------------------------------------------------------------------------------
+- This is dedicated to all the blog lovers out there! BABE is a web application inspired by [Medium](https://medium.com/). When you first come the page as a logged out user, you're able to search and read articles about a topic. Once you log in, you're abe to follow other users. Like and comment on different articles and best of all, save them in your own personal reading list.
+
+---
 
 ## **Discussion of Technologies Used**
-- Frontend
+
+- **Frontend**
+
   - HTML5
   - CSS3
   - JavaScript
-  
-- Backend
+
+- **Backend**
   - PostgreSQL
   - Express
 
 ---
 
 ## **Discussion of two features that show off the team's technical abilities**
-  - The ability to create your own account on the site allows for a more dynamic interaction with the application. Different people are able to personalize the application to their liking based on the articles they like to read. The technology behind this feature is primarily PostgreSQL. This allows us to store a user's information so they can retrieve it later. 
 
-  - Liking and commenting on an article is a feature that flexes our AJAX muscles. This allows a user to have a more fluid experience with the application by allowing them to socially interact on a different user's article without having to reload the entire page. The technologies behind this feature are a combination of Javascript and Express. When a user clicks on the like button, there is a javascript event listener on it, that will make a fetch request to the express server. When express gives a responce back to the client, javascript will update just that specific like button HTML element.
+- The ability to create your own account on the site allows for a more dynamic interaction with the application. Different people are able to personalize the application to their liking based on the articles they like to read. The technology behind this feature is primarily PostgreSQL. This allows us to store a user's information so they can retrieve it later.
+
+- Liking and commenting on an article is a feature that flexes our AJAX muscles. This allows a user to have a more fluid experience with the application by allowing them to socially interact on a different user's article without having to reload the entire page. The technologies behind this feature are a combination of Javascript and Express. When a user clicks on the like button, there is a javascript event listener on it, that will make a fetch request to the express server. When express gives a responce back to the client, javascript will update just that specific like button HTML element.
 
 ---
 
 ## **Discussion of both challenges faced and the way the team solved them**
-  -
 
----
+- ***
 
 ## **Code snippets to highlight the best code**
-  -
 
----
-
+- ***
 
 ## **Features Coming Soon**
 
 - Accounts
+
   - Can create your own account.
   - View other accounts.
   - Follow other accounts.
   - Can update your account information.
-  - *Can delete your account.* (Maybe)
+  - _Can delete your account._ (Maybe)
 
 - Articles
+
   - Can post an article.
   - Like an article.
   - Can edit an article.
@@ -75,7 +77,7 @@ _Team BABE's first FullStack Group Project recreating the popular website Medium
   - Can browse articles from your followers.
   - By Author, Title, Category!
   - Can see top trending articles.
-  - *Can bookmark an article.* (Maybe)
+  - _Can bookmark an article._ (Maybe)
 
 ---
 
