@@ -5,7 +5,7 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title
     body
-        form(action="/users/new" method="post")
+        form.log-in-form
             input(type="hidden" name="_csrf" value=csrfToken)
 
             div
