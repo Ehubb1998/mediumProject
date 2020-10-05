@@ -10,18 +10,21 @@
 
 | Backend Endpoints               | Method | Action                                |
 | ---------------------- | ------ | ------------------------------------- |
-| /api/articles              | GET    | Returns list of all Articles in DB    |
 | /api/articles/             | POST   | Post a new Article to DB              |
-| /api/articles/:id          | GET    | Lookup Article by ID                  |
 | /api/articles/:id/edit     | PUT    | Edit Article Content                  |
 | /api/articles/:id/delete   | DELETE | Delete an Entire Article              |
 | /api/articles/:id/comments | GET    | Retrieves all Comments for an Article |
-| /api/users              | GET    | Returns list of all Users in DB    |
+| /api/articles/:id/comments | POST   | Create a new comment  |
+| /api/articles/:id/comments/:id | DELETE | Delete a comment  |
 | /api/users/new          | POST   | Post a new user to DB              |
 | /api/users/:id          | GET    | Lookup Users by ID                  |
 | /api/users/:id/edit     | PUT    | Edit Users Content                  |
 | /api/users/:id/delete   | DELETE | Delete a User by id             |
-| /api/users/:id/comments | GET    | Retrieves all Comments for Users |
+| /api/users/:id/follow   | POST   | Create a new link between two users|
+| /api/users/:id/follow   | DELETE | Delete a following association |
+| /api/users/:id/token    | POST   | Create a token   |
+| **/api/users/:id/comments | GET    | Retrieves all Comments for Users ** |
+| **/api/users/             | GET    | Retrieve all users (maybe for search purposes)** |
 
 | Frontend Endpoints      | Method        | Template                                |
 | ---------------------- | ------ | ------------------------------------- |
