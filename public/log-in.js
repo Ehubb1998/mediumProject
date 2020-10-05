@@ -22,8 +22,9 @@ logInForm.addEventListener("submit", async (event) => {
       user: { id },
     } = await res.json();
 
-    localStorage.setItem("TWITTER_LITE_ACCESS_TOKEN", token);
-    localStorage.setItem("TWITTER_LITE_CURRENT_USER_ID", id);
+    // Will Add Reference when property is set.
+    // localStorage.setItem("", token);
+    // localStorage.setItem("", id);
 
     window.location.href = "/";
   } catch (err) {
