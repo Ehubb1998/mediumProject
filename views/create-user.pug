@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title
+    body
+        form(action="/users/new" method="post")
+            input(type="hidden" name="_csrf" value=csrfToken)
+
+            label(for="userName") User Name
+            input(name="userName" id="userName" type="text" required)
+
+            label(for="bio") Bio
+            textarea(name="bio" id="bio")
+
+            label(for="email") Email
+            input(name="email" id="email" type="email" required)
+
+            label(for="password") Password
+            input(name="" id="" type="password" required)
+
+            label(for="confirmedPassword") Confirmed
+            input(name="" id="" type="password" required)
+
+            button(type="sumbit") Submit
