@@ -8,19 +8,24 @@ html(lang="en")
         form(action="/users/new" method="post")
             input(type="hidden" name="_csrf" value=csrfToken)
 
-            label(for="userName") User Name
-            input(name="userName" id="userName" type="text" required)
+            div
+                label(for="userName") User Name
+                input(name="userName" id="userName" type="text" placeHolder="Babe McGee" required)
 
-            label(for="bio") Bio
-            textarea(name="bio" id="bio")
+            div
+                label(for="bio") Bio
+                textarea(name="bio" id="bio" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
 
-            label(for="email") Email
-            input(name="email" id="email" type="email" required)
+            div
+                label(for="email") Email
+                input(name="email" id="email" type="email" placeHolder="babe@thepig.com" required)
 
-            label(for="password") Password
-            input(name="" id="" type="password" required)
+            div
+                label(for="password") Password
+                input(name="password" id="password" type="password" placeHolder="password" required)
 
-            label(for="confirmedPassword") Confirmed
-            input(name="" id="" type="password" required)
-
-            button(type="sumbit") Submit
+            div
+                label(for="confirmedPassword") Confirmed
+                input(name="confirmedPassword" id="confirmedPassword" type="password" placeHolder="password" required)
+            div
+                button(type="sumbit") Submit
