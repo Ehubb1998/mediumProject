@@ -105,6 +105,8 @@
     app.use("/articles", articlesRouter);
     app.use("/users", usersRouter);
 
+    app.use(express.static(path.join(__dirname, "public")));
+
     app.use((req, res, next) => {
         const err = new Error("The requested resource couldn't be found.");
         err.status = 404;
