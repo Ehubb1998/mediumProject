@@ -2,9 +2,9 @@ const logInForm = document.querySelector(".log-in-form");
 logInForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(logInForm);
-  const email = formData.get("email");
+  const userName = formData.get("userName");
   const password = formData.get("password");
-  const body = { email, password };
+  const body = { userName, password };
 
   try {
     const res = await fetch("http://localhost:8080/users/token", {
@@ -20,7 +20,7 @@ logInForm.addEventListener("submit", async (e) => {
     const {
       token,
       user: { id },
-    } = await res.json;
+    } = await res.json();
 
     localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
     localStorage.setItem("MEDIUM_USER_ID", id);
@@ -45,12 +45,12 @@ logInForm.addEventListener("submit", async (e) => {
                     </div>
                     `
         );
+      } else {
+        alert(
+          "Something went wrong. Pleae check your internet connection and try again!"
+        );
       }
       errorsContainer.innerHTML = errorsHtml.join("");
-    } else {
-      alert(
-        "Something went wrong. Pleae check your internet connection and try again!"
-      );
     }
   }
 });
