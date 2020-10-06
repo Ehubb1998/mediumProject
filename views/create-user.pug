@@ -8,27 +8,26 @@ html(lang="en")
     body
         h1.new-user-page New User
         div.form-container
-            form.log-in-form 
-                //input(type="hidden" name="_csrf" value=csrfToken) Is this needed?
+            form.log-in-form
 
                 div#userName
-                    label(for="userName") User Name 
+                    label(for="userName") User Name
                     input(name="userName" class="form" type="text" placeHolder="Babe McGee" required)
 
                 div#bio
-                    label(for="bio") Bio 
+                    label(for="bio") Bio
                     textarea(name="bio" class="form" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
 
                 div#email
-                    label(for="email") Email 
+                    label(for="email") Email
                     input(name="email" class="form" type="email" placeHolder="babe@thepig.com" required)
 
                 div#password
-                    label(for="password") Password 
+                    label(for="password") Password
                     input(name="password" class="form" type="password" placeHolder="password" required)
 
                 div#confirmedPassword
-                    label(for="confirmedPassword") Confirmed 
+                    label(for="confirmedPassword") Confirmed
                     input(name="confirmedPassword" class="form" type="password" placeHolder="password" required)
                 div#button
                     button(type="sumbit") Submit
