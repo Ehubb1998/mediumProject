@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const path = require("path");
+const { allowedNodeEnvironmentFlags } = require("process");
 
 const userRouter = require("./routes/users");
 const indexRouter = require("./routes/users");
@@ -15,7 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "pug");
 
-app.get("/", (req, res) => {
-  res.render("create-user");
+userRouter.get("/sign-up", (req, res) => {
+  res.render("sign-up");
 });
 module.exports = app;

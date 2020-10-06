@@ -24,8 +24,7 @@ const validateEmailAndPassword = [
 ];
 
 userRouter.post(
-  "/",
-  requireAuth,
+  "/sign-up",
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
