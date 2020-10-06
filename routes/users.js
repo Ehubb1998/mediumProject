@@ -7,7 +7,7 @@ const { asyncHandler, handleValidationErrors } = require("../utils");
 const db = require("../db/models");
 const { User } = db;
 
-userRouter.use(requireAuth);
+// userRouter.use(requireAuth);
 
 const validateUserName = check("userName")
   .exists({ checkFalsy: true })
@@ -23,12 +23,9 @@ const validateEmailAndPassword = [
     .withMessage("Please provide a valid Email"),
 ];
 
-userRouter.get("/", async (req, res) => {
-  res.send("Hello!");
-});
-
 userRouter.post(
   "/",
+  requireAuth,
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
