@@ -3,17 +3,11 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const path = require("path");
-const { allowedNodeEnvironmentFlags } = require("process");
+
 
 const articleRouter = require("./routes/articles");
 const userRouter = require("./routes/users");
-<<<<<<< HEAD
-const indexRouter = require("./routes/users");
-const { requireAuth } = require("./auth");
-const { asyncHandler } = require("./utils");
-=======
 const indexRouter = require("./routes/index");
->>>>>>> index-splash
 
 app.use(morgan("dev"));
 app.use(express.json());
