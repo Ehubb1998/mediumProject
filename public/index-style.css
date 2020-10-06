@@ -1,0 +1,57 @@
+.home-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content__section1 {
+  display: grid;
+  grid-template-areas: "art art user" "art art topic";
+  border: 1px solid black;
+  width: auto;
+  height: 300px;
+  margin: 10px;
+}
+
+.content__article--A {
+  border: 0.5px solid gray;
+  grid-area: art;
+}
+
+.content__users--B {
+  border: 0.5px solid gray;
+  grid-area: user;
+}
+
+.content__categories--C {
+  border: 0.5px solid gray;
+  grid-area: topic;
+}
+
+.content__section2 {
+  border: 1px solid black;
+  width: auto;
+  height: auto;
+  margin: 10px;
+}
+
+.content__article--B {
+  border: 0.5px solid gray;
+  height: 200px;
+}
+
+.content__section3 {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  width: auto;
+  height: auto;
+  margin: 10px;
+}
+
+.content__article--C {
+  border: 0.5px solid gray;
+}
+
+.content__categories--D {
+  border: 0.5px solid gray;
+}

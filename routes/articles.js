@@ -7,7 +7,6 @@ const { check, validationResult } = require("express-validator");
 const { requireAuth } = require("../auth");
 const { router } = require("../app");
 const userRouter = require("./users");
-const { noExtendLeft } = require("sequelize/types/lib/operators");
 
 articleRouter.use(express.urlencoded());
 articleRouter.use(requireAuth);

@@ -32,8 +32,12 @@ userRouter.get("/sign-up", (req, res) => {
   res.render("sign-up");
 });
 
+userRouter.get("/log-in", (req, res) => {
+  res.render("log-in");
+});
+
 userRouter.post(
-  "/sign-up",
+  "/",
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
