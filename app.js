@@ -6,18 +6,21 @@ const path = require("path");
 const { allowedNodeEnvironmentFlags } = require("process");
 
 const userRouter = require("./routes/users");
-const indexRouter = require("./routes/users");
+const indexRouter = require("./routes/index");
 
 app.use(morgan("dev"));
 app.use(express.json());
-app.use("/users", userRouter);
-app.use("/", indexRouter);
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/", indexRouter);
+app.use("/users", userRouter);
 
 app.set("view engine", "pug");
 
-userRouter.get("/sign-up", (req, res) => {
-  res.render("sign-up");
+// Catch unhandled requests and forward to error handler.
+app.use((req, res, next) => {
+  const err = new Error("The requested resource couldn't be found.");
+  err.status = 404;
+  next(err);
 });
 
 module.exports = app;

@@ -9,7 +9,7 @@ signUpForm.addEventListener("submit", async (e) => {
   const bio = formData.get("bio");
   const body = { email, password, userName, bio };
   try {
-    const res = await fetch("http://localhost:8080/users/sign-up", {
+    const res = await fetch("http://localhost:8080/users", {
       method: "POST",
       body: JSON.stringify(body),
       headers: {

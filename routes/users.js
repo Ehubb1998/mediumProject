@@ -28,6 +28,10 @@ userRouter.get("/", (req, res) => {
   res.send("Hello");
 });
 
+userRouter.get("/sign-up", (req, res) => {
+  res.render("sign-up");
+});
+
 userRouter.post(
   "/sign-up",
   handleValidationErrors,
