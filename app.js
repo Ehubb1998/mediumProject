@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", userRouter);
+app.use("/articles", articleRouter);
 
 app.set("view engine", "pug");
 
