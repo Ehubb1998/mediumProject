@@ -4,7 +4,6 @@ const morgan = require("morgan");
 const app = express();
 const path = require("path");
 
-
 const articleRouter = require("./routes/articles");
 const userRouter = require("./routes/users");
 const indexRouter = require("./routes/index");

@@ -1,10 +1,9 @@
 form {
-  
-    font-family: 'Courier New', Courier, monospace
+  font-family: "Courier New", Courier, monospace;
 }
 
 #userName {
-   margin: 2em;
+  margin: 2em;
 }
 
 #bio {
@@ -12,35 +11,31 @@ form {
 }
 
 #email {
-   margin: 2em;
+  margin: 2em;
 }
 
 #password {
-    margin: 2em;
+  margin: 2em;
 }
 
 #confirmedPassword {
-    margin: 2em;
+  margin: 2em;
 }
 
 #button {
-   margin-left: 2em;
+  margin-left: 2em;
 }
 
 #button:hover {
-    cursor: pointer;
-    transform: translateY(-0.15em);
-    box-shadow: 0.1em 0.1em 0.1em gray;
+  cursor: pointer;
+  transform: translateY(-0.15em);
+  box-shadow: 0.1em 0.1em 0.1em gray;
 }
 
 .new-user-page {
-    font-family: 'Courier New', Courier, monospace
-}
-
-body {
-    background-color: lightgray;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .form-container {
-    background-color: darkgray;
+  background-color: darkgray;
 }

@@ -7,7 +7,7 @@ const db = require("../db/models");
 const { User } = db;
 
 indexRouter.get("/", (req, res) => {
-  res.send("Hello");
+  res.render("splash");
 });
 
 module.exports = indexRouter;
