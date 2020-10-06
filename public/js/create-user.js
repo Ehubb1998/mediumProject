@@ -29,10 +29,6 @@ signUpForm.addEventListener("submit", async (e) => {
 
     window.location.href = "/";
   } catch (err) {
-<<<<<<< HEAD
     console.error(err);
-=======
-    console.error(err)
->>>>>>> e48d73e452efdd86515b63dde57ff43942b32a17
   }
 });
