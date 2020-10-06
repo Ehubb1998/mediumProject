@@ -22,10 +22,8 @@ logInForm.addEventListener("submit", async (event) => {
       user: { id },
     } = await res.json();
 
-
     localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
     localStorage.setItem("MEDIUM_USER_ID", id);
-
 
     window.location.href = "/";
   } catch (err) {

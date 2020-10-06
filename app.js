@@ -5,7 +5,7 @@ const app = express();
 const path = require("path");
 
 const userRouter = require("./routes/users");
-const indexRouter = require("./index");
+const indexRouter = require("./routes/users");
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -16,6 +16,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "pug");
 
 app.get("/", (req, res) => {
-    res.render("create-user");
-})
+  res.render("create-user");
+});
 module.exports = app;
