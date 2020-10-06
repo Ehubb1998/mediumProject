@@ -6,7 +6,7 @@ signUpForm.addEventListener("submit", async (e) => {
   const username = formData.get("userName");
   const email = formData.get("email");
   const password = formData.get("password");
-  const bio = formData.get("bio")
+  const bio = formData.get("bio");
   const body = { email, password, userName, bio };
   try {
     const res = await fetch("http://localhost:8080/users", {
@@ -29,6 +29,6 @@ signUpForm.addEventListener("submit", async (e) => {
 
     window.location.href = "/";
   } catch (err) {
-    handleErrors(err);
+    console.error(err);
   }
 });

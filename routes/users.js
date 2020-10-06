@@ -25,7 +25,6 @@ const validateEmailAndPassword = [
 
 userRouter.post(
   "/",
-  requireAuth,
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
