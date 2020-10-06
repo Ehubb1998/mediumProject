@@ -10,6 +10,10 @@ const { User } = db;
 
 // userRouter.use(requireAuth);
 
+User.prototype.validatePassword = function (password) {
+  return bcrypt.compareSync(password, this.hashedPassword.toString());
+};
+
 const validateUserName = check("userName")
   .exists({ checkFalsy: true })
   .withMessage("Please provide a valid User Name");
@@ -22,6 +26,15 @@ const validateEmailAndPassword = [
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage("Please provide a valid Email"),
+];
+
+const validateUserNameAndPassword = [
+  check("userName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a valid User Name"),
+  check("hashedPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a valid Password"),
 ];
 
 userRouter.get("/", (req, res) => {
@@ -56,12 +69,12 @@ userRouter.post(
 
 userRouter.post(
   "/token",
-  validateEmailAndPassword,
+  validateUserNameAndPassword,
   asyncHandler(async (req, res, next) => {
-    const { email, password } = req.body;
+    const { userName, password } = req.body;
     const user = await User.findOne({
       where: {
-        email,
+        userName,
       },
     });
 
