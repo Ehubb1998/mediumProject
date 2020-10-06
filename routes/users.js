@@ -1,10 +1,13 @@
 const express = require("express");
 const userRouter = express.Router();
 const bcrypt = require("bcryptjs");
+const { getUserToken, requireAuth } = require("../auth");
 const { check } = require("express-validator");
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const db = require("../db/models");
 const { User } = db;
+
+userRouter.use(requireAuth);
 
 const validateUserName = check("userName")
   .exists({ checkFalsy: true })
@@ -20,16 +23,49 @@ const validateEmailAndPassword = [
     .withMessage("Please provide a valid Email"),
 ];
 
+userRouter.get("/", async (req, res) => {
+  res.send("Hello!");
+});
+
 userRouter.post(
   "/",
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
   asyncHandler(async (req, res) => {
-    // user creation logic here
     const { userName, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ userName, email, hashedPassword });
+
+    const token = getUserToken(user);
+    res.status(201).json({
+      user: { id: user.id },
+      token,
+    });
+  })
+);
+
+userRouter.post(
+  "/token",
+  validateEmailAndPassword,
+  asyncHandler(async (req, res, next) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (!user || !user.validate(password)) {
+      const err = new Error("Login failed");
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = "The provided credentials were invalid.";
+      return next(err);
+    }
+
+    const token = getUserToken(user);
+    res.json({ token, user: { id: user.id } });
   })
 );
 
