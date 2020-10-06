@@ -3,28 +3,31 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title
+        title Create a new User
+        link(rel="stylesheet" href="style.css")
     body
-        form.log-in-form
+        h1.new-user-page New User
+        div.form-container
+            form.log-in-form
 
-            div
-                label(for="userName") User Name
-                input(name="userName" id="userName" type="text" placeHolder="Babe McGee" required)
+                div#userName
+                    label(for="userName") User Name
+                    input(name="userName" class="form" type="text" placeHolder="Babe McGee" required)
 
-            div
-                label(for="bio") Bio
-                textarea(name="bio" id="bio" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
+                div#bio
+                    label(for="bio") Bio
+                    textarea(name="bio" class="form" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
 
-            div
-                label(for="email") Email
-                input(name="email" id="email" type="email" placeHolder="babe@thepig.com" required)
+                div#email
+                    label(for="email") Email
+                    input(name="email" class="form" type="email" placeHolder="babe@thepig.com" required)
 
-            div
-                label(for="password") Password
-                input(name="password" id="password" type="password" placeHolder="password" required)
+                div#password
+                    label(for="password") Password
+                    input(name="password" class="form" type="password" placeHolder="password" required)
 
-            div
-                label(for="confirmedPassword") Confirmed
-                input(name="confirmedPassword" id="confirmedPassword" type="password" placeHolder="password" required)
-            div
-                button(type="sumbit") Submit
+                div#confirmedPassword
+                    label(for="confirmedPassword") Confirmed
+                    input(name="confirmedPassword" class="form" type="password" placeHolder="password" required)
+                div#button
+                    button(type="sumbit") Submit
