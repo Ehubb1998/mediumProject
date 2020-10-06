@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title
+    body
+        form.log-in-form
+
+            div
+                label(for="userName") User Name
+                input(name="userName" id="userName" type="text" placeHolder="Babe McGee" required)
+
+            div
+                label(for="bio") Bio
+                textarea(name="bio" id="bio" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
+
+            div
+                label(for="email") Email
+                input(name="email" id="email" type="email" placeHolder="babe@thepig.com" required)
+
+            div
+                label(for="password") Password
+                input(name="password" id="password" type="password" placeHolder="password" required)
+
+            div
+                label(for="confirmedPassword") Confirmed
+                input(name="confirmedPassword" id="confirmedPassword" type="password" placeHolder="password" required)
+            div
+                button(type="sumbit") Submit
