@@ -22,9 +22,10 @@ logInForm.addEventListener("submit", async (event) => {
       user: { id },
     } = await res.json();
 
-    // Will Add Reference when property is set.
-    // localStorage.setItem("", token);
-    // localStorage.setItem("", id);
+
+    localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
+    localStorage.setItem("MEDIUM_USER_ID", id);
+
 
     window.location.href = "/";
   } catch (err) {
