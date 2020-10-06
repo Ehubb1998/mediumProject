@@ -28,6 +28,11 @@ const articleNotFoundError = (articleId) => {
   error.message = `${articleId} was not found.`;
   return error;
 };
+articleRouter.get(
+  "/",
+  (req, res) => {
+      res.send("these are articles.")
+});
 
 articleRouter.get(
   "/",
@@ -42,7 +47,7 @@ articleRouter.get(
 );
 
 articleRouter.get(
-  "/",
+  "/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const articleId = await Article.findByPk(req.params.id);
     if (articleId === null) {
@@ -57,14 +62,27 @@ articleRouter.post(
   "/",
   articleValidations,
   asyncHandler(async (req, res) => {
-    const { body } = req.body;
+    const { body, title } = req.body;
+
     const article = await Article.create({
+      title,
       body,
       userId: req.user.id,
     });
     res.json({ article });
   })
 );
+
+articleRouter.get("/new", (req, res) => {
+  res.render("create-article");
+});
+
+articleRouter.get("/:id", asyncHandler( async(req, res) => {
+  const article = await Article.findByPk(req.params.id);
+  res.render("display-article",
+  { title: article.title, body: article.body, comments: article.comments })
+}));
+
 
 articleRouter.put(
   "/:id(\\d+)",
