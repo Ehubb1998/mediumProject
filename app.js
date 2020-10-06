@@ -15,12 +15,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "pug");
 
-app.get("/", (req, res) => {
-  res.render("splash");
-});
-
-// Route to Sign Up Form
-userRouter.get("/sign-up", (req, res) => {
+userRouter.get("/", (req, res) => {
   res.render("create-user");
 });
 
