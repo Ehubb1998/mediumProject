@@ -5,6 +5,7 @@ const { getUserToken, requireAuth } = require("../auth");
 const { check } = require("express-validator");
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const db = require("../db/models");
+const { use } = require("../app");
 const { User } = db;
 
 // userRouter.use(requireAuth);
@@ -23,12 +24,12 @@ const validateEmailAndPassword = [
     .withMessage("Please provide a valid Email"),
 ];
 
+userRouter.get("/", (req, res) => {
+  res.send("Hello");
+});
+
 userRouter.post(
-<<<<<<< HEAD
   "/sign-up",
-=======
-  "/",
->>>>>>> master
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
