@@ -24,7 +24,11 @@ const validateEmailAndPassword = [
 ];
 
 userRouter.post(
+<<<<<<< HEAD
   "/sign-up",
+=======
+  "/",
+>>>>>>> master
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,

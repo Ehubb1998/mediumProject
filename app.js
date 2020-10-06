@@ -16,7 +16,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "pug");
 
+<<<<<<< HEAD
 userRouter.get("/sign-up", (req, res) => {
   res.render("sign-up");
+=======
+userRouter.get("/", (req, res) => {
+  res.render("create-user");
+>>>>>>> master
 });
+
 module.exports = app;
