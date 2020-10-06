@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title 
+        link(rel="stylesheet" href="style.css")
+    body
+        div.form-container
+            form.create-article-form
+
+                div
+                    input(name="title" class="form" type="text" placeHolder="Title" required)
+
+                div
+                    textarea(name="body" class="form" placeHolder="Tell your story." required)
+
+                div#button
+                    button(type="sumbit" class=".user-submit") Publish
+            script(src="js/create-article.js")
