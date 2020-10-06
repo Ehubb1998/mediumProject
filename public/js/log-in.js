@@ -1,7 +1,6 @@
 const logInForm = document.querySelector(".log-in-form");
 logInForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  console.log("Getting Here");
   const formData = new FormData(logInForm);
   const email = formData.get("email");
   const password = formData.get("password");
