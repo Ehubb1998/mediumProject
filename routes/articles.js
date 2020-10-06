@@ -42,7 +42,7 @@ articleRouter.get(
 );
 
 articleRouter.get(
-  "/",
+  "/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const articleId = await Article.findByPk(req.params.id);
     if (articleId === null) {
