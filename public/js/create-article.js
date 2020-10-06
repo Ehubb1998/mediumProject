@@ -8,11 +8,12 @@ createArticle.addEventListener("submit", async (e) => {
 
   const data = { title, body };
   try {
-    const res = await fetch("http://localhost:8080/users", {
+    const res = await fetch("http://localhost:8080/articles", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('MEDIUM_ACCESS_TOKEN')}`
       },
     });
     if (!res.ok) {
@@ -20,6 +21,6 @@ createArticle.addEventListener("submit", async (e) => {
     }
     window.location.href = "/";
   } catch (err) {
-    handleErrors(err);
+    console.error(err);
   }
 });
