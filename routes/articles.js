@@ -28,11 +28,7 @@ const articleNotFoundError = (articleId) => {
   error.message = `${articleId} was not found.`;
   return error;
 };
-articleRouter.get(
-  "/",
-  (req, res) => {
-      res.send("these are articles.")
-});
+
 
 articleRouter.get(
   "/",
