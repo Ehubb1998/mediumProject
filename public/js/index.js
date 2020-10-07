@@ -19,11 +19,13 @@ const app = {
       );
 
       const data = await res.json();
-      const user = data.user.email;
+      const user = data.user.userName;
       if (!res.ok) {
         throw res;
       } else {
-        console.log(data.user.email);
+        document.getElementById(
+          "welcome-msg"
+        ).innerText = `Good Afternoon ${user}`;
       }
     } catch (error) {
       console.error(error);

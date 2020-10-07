@@ -1,12 +1,26 @@
 .home-navigation {
   display: flex;
   justify-content: space-between;
+  margin: 60px;
+}
+
+svg {
+  width: 111.5px;
+  height: 22px;
 }
 
 .home-navigation__end {
+  margin: 0;
   display: flex;
 }
 
+#welcome-msg {
+  margin: 0;
+}
+
+.home-navigation__start {
+  display: flex;
+}
 .content__section1 {
   display: grid;
   grid-template-areas: "art art user" "art art topic";
