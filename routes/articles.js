@@ -53,7 +53,7 @@ articleRouter.get(
 articleRouter.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
-    const id = req.params.id
+    const id = parseInt(req.params.id, 10)
     const article = await Article.findByPk(id, {
       include: "User"
     });
@@ -61,10 +61,7 @@ articleRouter.get(
     if (article === null) {
       next(articleNotFoundError(article));
     } else {
-    
-      res.render("display-article", {
-        article
-      });
+      res.render("display-article", { article });
     }
   })
 );

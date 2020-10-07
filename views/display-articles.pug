@@ -8,7 +8,9 @@ html(lang="en")
     body
         each article in articles
             div
-                h1= article.title
+
+                a(href=`http://localhost:8080/articles/${article.id}`)
+                    h1= article.title
                 h3= article.User.userName
                 div Claps: #{article.claps}
                 //- div= article.body
