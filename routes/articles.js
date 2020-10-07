@@ -11,9 +11,17 @@ const userRouter = require("./users");
 articleRouter.use(express.urlencoded());
 // articleRouter.use(requireAuth);
 
-articleRouter.get("/", (req, res) => {
-    res.send("Articles Homepage");
-})
+articleRouter.get("/", async (req, res) => {
+  const articles = await Article.findAll();
+
+    res.render("display-articles", {
+      title: article.title,
+      body: article.body,
+      claps: article.claps,
+      comments: article.comments
+    });
+});
+
 articleRouter.get("/new", (req, res) => {
     res.render("create-article");
 })
@@ -59,6 +67,7 @@ articleRouter.get(
       res.render("display-article", {
         title: article.title,
         body: article.body,
+        claps: article.claps,
         comments: article.comments
       });
     }
