@@ -12,23 +12,24 @@ html(lang="en")
 
                 div#userName
                     label(for="userName") User Name
-                    input(name="userName" class="form" type="text" placeHolder="Babe McGee" required)
+                    input(name="userName" id="userField" class="form" type="text" placeHolder="Babe McGee" required)
 
                 div#bio
                     label(for="bio") Bio
-                    textarea(name="bio" class="form" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
+                    textarea(name="bio" id="bioField" class="form" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
 
                 div#email
                     label(for="email") Email
-                    input(name="email" class="form" type="email" placeHolder="babe@thepig.com" required)
+                    input(name="email" id="emailField" class="form" type="email" placeHolder="babe@thepig.com" required)
 
                 div#password
                     label(for="password") Password
-                    input(name="password" class="form" type="password" placeHolder="password" required)
+                    input(name="password" id="passwordField" class="form" type="password" placeHolder="password" required)
 
                 div#confirmedPassword
                     label(for="confirmedPassword") Confirmed
-                    input(name="confirmedPassword" class="form" type="password" placeHolder="password" required)
+                    input(name="confirmedPassword" id="cpField" class="form" type="password" placeHolder="password" required)
                 div#button
                     button(type="sumbit" class=".user-submit") Submit
+                    button(type="button" id="demo-login") Demo
             script(src="/js/create-user.js")
