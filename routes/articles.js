@@ -12,13 +12,7 @@ articleRouter.use(express.urlencoded());
 
 
 articleRouter.get("/", async (req, res) => {
-  const articles = await Article.findAll();
-  const mappedArticles = articles.map(article => {
-    title: article.title;
-    body: article.body;
-    claps: article.claps;
-    comments: article.comments
-  })
+  const articles = await Article.findAll({include: "User"});
   res.render("display-articles", { articles });
 });
 
@@ -59,16 +53,17 @@ articleRouter.get(
 articleRouter.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
-    const articleId = await Article.findByPk(req.params.id);
-    if (articleId === null) {
-      next(articleNotFoundError(articleId));
+    const id = req.params.id
+    const article = await Article.findByPk(id, {
+      include: "User"
+    });
+    console.log(article)
+    if (article === null) {
+      next(articleNotFoundError(article));
     } else {
-      // res.json({ articleId });
+    
       res.render("display-article", {
-        title: article.title,
-        body: article.body,
-        claps: article.claps,
-        comments: article.comments
+        article
       });
     }
   })
