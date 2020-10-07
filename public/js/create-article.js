@@ -5,8 +5,10 @@ createArticle.addEventListener("submit", async (e) => {
   const formData = new FormData(createArticle);
   const title = formData.get("title");
   const body = formData.get("body");
-
-  const data = { title, body };
+  const claps = 0;
+  const userId = localStorage.getItem("MEDIUM_USER_ID");
+  const data = { title, body, claps, userId };
+  console.log(data);
   try {
     const res = await fetch("http://localhost:8080/articles", {
       method: "POST",
