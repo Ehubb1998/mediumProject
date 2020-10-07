@@ -37,13 +37,25 @@ form {
 }
 
 .form-container {
-  background-color: darkgray;
+  /* background-color: darkgray; */
+  background-color:white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 #bioField {
   height: 2em;
 }
-
+.title {
+  font-size: 3rem;
+}
 .title-div {
-  background-color: red;
+  background-color: green;
+  width: 100%;
+  border: none;
+}
+.create-article-form {
+  display: inline-block;
+  padding: 10rem;
 }
