@@ -9,17 +9,17 @@ const { router } = require("../app");
 const userRouter = require("./users");
 
 articleRouter.use(express.urlencoded());
-// articleRouter.use(requireAuth);
+
 
 articleRouter.get("/", async (req, res) => {
   const articles = await Article.findAll();
-
-    res.render("display-articles", {
-      title: article.title,
-      body: article.body,
-      claps: article.claps,
-      comments: article.comments
-    });
+  const mappedArticles = articles.map(article => {
+    title: article.title;
+    body: article.body;
+    claps: article.claps;
+    comments: article.comments
+  })
+  res.render("display-articles", { articles });
 });
 
 articleRouter.get("/new", (req, res) => {
