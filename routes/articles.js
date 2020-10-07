@@ -9,8 +9,14 @@ const { router } = require("../app");
 const userRouter = require("./users");
 
 articleRouter.use(express.urlencoded());
-articleRouter.use(requireAuth);
+// articleRouter.use(requireAuth);
 
+articleRouter.get("/", (req, res) => {
+    res.send("Articles Homepage");
+})
+articleRouter.get("/new", (req, res) => {
+    res.render("create-article");
+})
 const articleValidations = [
   check("title")
     .exists({ checkFalsy: true })
@@ -61,6 +67,7 @@ articleRouter.get(
 
 articleRouter.post(
   "/",
+  requireAuth,
   articleValidations,
   asyncHandler(async (req, res) => {
     const { body, title } = req.body;
@@ -68,7 +75,7 @@ articleRouter.post(
     const article = await Article.create({
       title,
       body,
-      userId: req.user.id,
+      userId: req.user.id
     });
     res.json({ article });
   })
@@ -87,6 +94,7 @@ articleRouter.get("/:id", asyncHandler( async(req, res) => {
 
 articleRouter.put(
   "/:id(\\d+)",
+  requireAuth,
   asyncHandler(async (req, res) => {
     const { body } = req.body;
     const articleId = await Article.findByPk(req.params.id);
@@ -102,6 +110,7 @@ articleRouter.put(
 
 articleRouter.delete(
   "/:id(\\d+)",
+  requireAuth,
   asyncHandler(async (req, res) => {
     const articleId = await Article.findByPk(req.params.id);
     if (articleId === null) {

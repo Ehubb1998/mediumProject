@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Article.associate = function (models) {
-    Article.belongsTo(models.User, { foreignKey: "userId" });
+    Article.belongsTo(models.User, { foreignKey: "userId" }),
+    Article.hasMany(models.Comment, { foreignKey: "articleId" })
   };
   return Article;
 };

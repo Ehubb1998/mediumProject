@@ -10,11 +10,11 @@ const indexRouter = require("./routes/index");
 
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", userRouter);
 app.use("/articles", articleRouter);
 
+app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "pug");
 
 // Catch unhandled requests and forward to error handler.
