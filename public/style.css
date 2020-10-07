@@ -39,3 +39,7 @@ form {
 .form-container {
   background-color: darkgray;
 }
+
+#bioField {
+  height: 2em;
+}
