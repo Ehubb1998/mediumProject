@@ -1,18 +1,44 @@
+import { handleErrors } from "./utils.js";
+
 const app = {
   init: () => {
+    app.checkAuth();
     app.verifyLogin();
     app.logOut();
+  },
+
+  checkAuth: async () => {
+    try {
+      const res = await fetch(
+        `http://localhost:8080/users/${localStorage.getItem("MEDIUM_USER_ID")}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem(
+              "MEDIUM_ACCESS_TOKEN"
+            )}`,
+          },
+        }
+      );
+
+      const data = await res.json();
+      const user = data.user.email;
+      if (!res.ok) {
+        throw res;
+      } else {
+        console.log(data.user.email);
+      }
+    } catch {
+      handleErrors(error);
+    }
   },
 
   verifyLogin: () => {
     const token = localStorage.getItem("MEDIUM_ACCESS_TOKEN");
     if (!token) {
-      alert("Sign-Up or Log-in!");
       document.querySelectorAll(".limited").forEach((ele) => {
         ele.classList.add("unauthorized");
       });
     } else {
-      alert("Thanks for Signing In!");
     }
   },
 
@@ -24,4 +50,4 @@ const app = {
   },
 };
 
-document.addEventListener("DOMContentLoaded", () => app.init());
+window.addEventListener("DOMContentLoaded", async () => app.init());

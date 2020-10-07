@@ -3,11 +3,13 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const path = require("path");
+const bearerToken = require("express-bearer-token");
 
 const articleRouter = require("./routes/articles");
 const userRouter = require("./routes/users");
 const indexRouter = require("./routes/index");
 
+app.use(bearerToken());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use("/", indexRouter);

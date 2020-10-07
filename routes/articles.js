@@ -8,6 +8,9 @@ const { requireAuth } = require("../auth");
 const { router } = require("../app");
 const userRouter = require("./users");
 
+
+
+
 articleRouter.use(express.urlencoded());
 
 
@@ -16,9 +19,10 @@ articleRouter.get("/", async (req, res) => {
   res.render("display-articles", { articles });
 });
 
+
 articleRouter.get("/new", (req, res) => {
-    res.render("create-article");
-})
+  res.render("create-article");
+});
 const articleValidations = [
   check("title")
     .exists({ checkFalsy: true })
@@ -36,7 +40,6 @@ const articleNotFoundError = (articleId) => {
   error.message = `${articleId} was not found.`;
   return error;
 };
-
 
 articleRouter.get(
   "/",
@@ -61,7 +64,16 @@ articleRouter.get(
     if (article === null) {
       next(articleNotFoundError(article));
     } else {
+
+      // res.json({ articleId });
+      res.render("display-article", {
+        title: article.title,
+        body: article.body,
+        comments: article.comments,
+      });
+
       res.render("display-article", { article });
+
     }
   })
 );
@@ -76,7 +88,7 @@ articleRouter.post(
     const article = await Article.create({
       title,
       body,
-      userId: req.user.id
+      userId: req.user.id,
     });
     res.json({ article });
   })
@@ -86,12 +98,17 @@ articleRouter.get("/new", (req, res) => {
   res.render("create-article");
 });
 
-articleRouter.get("/:id", asyncHandler( async(req, res) => {
-  const article = await Article.findByPk(req.params.id);
-  res.render("display-article",
-  { title: article.title, body: article.body, comments: article.comments })
-}));
-
+articleRouter.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const article = await Article.findByPk(req.params.id);
+    res.render("display-article", {
+      title: article.title,
+      body: article.body,
+      comments: article.comments,
+    });
+  })
+);
 
 articleRouter.put(
   "/:id(\\d+)",

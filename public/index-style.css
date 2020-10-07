@@ -3,6 +3,10 @@
   justify-content: space-between;
 }
 
+.home-navigation__end {
+  display: flex;
+}
+
 .content__section1 {
   display: grid;
   grid-template-areas: "art art user" "art art topic";
@@ -63,4 +67,15 @@
 .unauthorized {
   color: red;
   display: none;
+}
+
+.user {
+  height: 25px;
+  width: 25px;
+  background-color: blueviolet;
+  border-radius: 50%;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+  display: inline-block;
 }

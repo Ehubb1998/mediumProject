@@ -8,8 +8,6 @@ const db = require("../db/models");
 const { use } = require("../app");
 const { User } = db;
 
-// userRouter.use(requireAuth);
-
 User.prototype.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.hashedPassword.toString());
 };
@@ -36,18 +34,6 @@ const validateUserNameAndPassword = [
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid Password"),
 ];
-
-userRouter.get("/", (req, res) => {
-  res.send("Hello");
-});
-
-userRouter.get("/sign-up", (req, res) => {
-  res.render("sign-up");
-});
-
-userRouter.get("/log-in", (req, res) => {
-  res.render("log-in");
-});
 
 userRouter.post(
   "/",
@@ -90,5 +76,19 @@ userRouter.post(
     res.json({ token, user: { id: user.id } });
   })
 );
+
+userRouter.get("/:id", requireAuth, async (req, res, next) => {
+  const user = await User.findOne({
+    where: {
+      id: req.params.id,
+    },
+  });
+
+  if (user) {
+    res.send({ user });
+  } else {
+    next();
+  }
+});
 
 module.exports = userRouter;
