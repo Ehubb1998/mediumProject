@@ -18,6 +18,10 @@ router.get("/articles", (req, res) => {
   res.send("Articles Homepage");
 });
 
+router.get("/coming-soon", (req, res) => {
+  res.render("coming-soon");
+});
+
 // router.get("/create", (req, res) => {
 //   res.render("create");
 // });

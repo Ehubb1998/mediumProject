@@ -1,19 +1,15 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title= title
-        link(rel="stylesheet" href="style.css")
-    body
-        each article in articles
-            div
+extends layout.pug
 
-                a(href=`http://localhost:8080/articles/${article.id}`)
-                    h1= article.title
-                h3= article.User.userName
-                div Claps: #{article.claps}
-                //- div= article.body
-                    // if able to clip article, can display partially
-                if article.comments
-                    div= article.comments
+body content
+  body
+   each article in articles
+     div
+
+      a(href=`http://localhost:8080/articles/${article.id}`)
+        h1= article.title
+        h3= article.User.userName
+        div Claps: #{article.claps}
+        //- div= article.body
+        // if able to clip article, can display partially
+        if article.comments
+          div= article.comments

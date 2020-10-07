@@ -8,17 +8,12 @@ const { requireAuth } = require("../auth");
 const { router } = require("../app");
 const userRouter = require("./users");
 
-
-
-
 articleRouter.use(express.urlencoded());
 
-
 articleRouter.get("/", async (req, res) => {
-  const articles = await Article.findAll({include: "User"});
+  const articles = await Article.findAll({ include: "User" });
   res.render("display-articles", { articles });
 });
-
 
 articleRouter.get("/new", (req, res) => {
   res.render("create-article");
@@ -56,15 +51,14 @@ articleRouter.get(
 articleRouter.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
-    const id = parseInt(req.params.id, 10)
+    const id = parseInt(req.params.id, 10);
     const article = await Article.findByPk(id, {
-      include: "User"
+      include: "User",
     });
-    console.log(article)
+    console.log(article);
     if (article === null) {
       next(articleNotFoundError(article));
     } else {
-
       // res.json({ articleId });
       res.render("display-article", {
         title: article.title,
@@ -73,7 +67,6 @@ articleRouter.get(
       });
 
       res.render("display-article", { article });
-
     }
   })
 );
