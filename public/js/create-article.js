@@ -13,12 +13,13 @@ createArticle.addEventListener("submit", async (e) => {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem('MEDIUM_ACCESS_TOKEN')}`
+        Authorization: `Bearer ${localStorage.getItem('MEDIUM_ACCESS_TOKEN')}`
       },
     });
     if (!res.ok) {
       throw res;
     }
+
     window.location.href = "/";
   } catch (err) {
     console.error(err);

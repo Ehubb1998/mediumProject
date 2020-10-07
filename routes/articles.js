@@ -49,7 +49,12 @@ articleRouter.get(
     if (articleId === null) {
       next(articleNotFoundError(articleId));
     } else {
-      res.json({ articleId });
+      // res.json({ articleId });
+      res.render("display-article", {
+        title: article.title,
+        body: article.body,
+        comments: article.comments
+      });
     }
   })
 );
