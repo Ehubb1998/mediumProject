@@ -1,5 +1,3 @@
-import { handleErrors } from "./utils.js";
-
 const app = {
   init: () => {
     app.checkAuth();
@@ -27,8 +25,8 @@ const app = {
       } else {
         console.log(data.user.email);
       }
-    } catch {
-      handleErrors(error);
+    } catch (error) {
+      console.error(error);
     }
   },
 
