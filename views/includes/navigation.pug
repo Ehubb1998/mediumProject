@@ -13,3 +13,11 @@ nav.home-navigation
             path(d="M16 6a2 2 0 0 1 2 2v13.66h-.01a.5.5 0 0 1-.12.29.5.5 0 0 1-.7.03l-5.67-4.13-5.66 4.13a.5.5 0 0 1-.7-.03.48.48 0 0 1-.13-.29H5V8c0-1.1.9-2 2-2h9zM6 8v12.64l5.16-3.67a.49.49 0 0 1 .68 0L17 20.64V8a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z")
         button(id="start").login Get Started
         include user-dropdown
+
+div.loginPrompt.unauthorized
+      div.loginPrompt__inner
+        h2 Join Medium.
+        p Create an account to receive great stories in your inbox, personalize your homepage, and follow authors and topics that you love.
+        a(href="/sign-up") Sign up with email
+        p Already have an account?
+          a(href="/log-in")    Sign in.

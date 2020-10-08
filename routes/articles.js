@@ -36,25 +36,14 @@ const articleNotFoundError = (articleId) => {
   return error;
 };
 
-
-
 articleRouter.get(
   "/:id(\\d+)",
-<<<<<<< HEAD
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res, next) => {
     const id = parseInt(req.params.id, 10);
     const article = await Article.findByPk(id, {
-      include: "User",
+      include: { model: Comment, as: "comments", include: "User" },
     });
-    console.log(article);
-=======
-  asyncHandler(async (req, res, next) => {
-    const id = parseInt(req.params.id, 10)
-    const article = await Article.findByPk(id, {
-      include: {model: Comment, as: 'comments', include: 'User'}
-    });
-    console.log(JSON.stringify(article))
->>>>>>> master
+    console.log(JSON.stringify(article));
     if (article === null) {
       next(articleNotFoundError(article));
     } else {
@@ -64,12 +53,7 @@ articleRouter.get(
         comments: article.comments,
       });
 
-<<<<<<< HEAD
-      res.render("display-article", { article });
-=======
       // res.render("display-article", { article });
-
->>>>>>> master
     }
   })
 );
@@ -100,9 +84,9 @@ articleRouter.get(
     const article = await Article.findByPk(req.params.id);
     const comments = await Comment.findAll({
       where: {
-        articleId: req.params.id
-      }
-    })
+        articleId: req.params.id,
+      },
+    });
 
     res.render("display-article", {
       title: article.title,
