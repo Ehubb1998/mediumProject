@@ -10,11 +10,9 @@ router.get("/sign-up", (req, res) => {
   res.render("sign-up");
 });
 
-router.get("/log-in", (req, res) => {
-  res.render("log-in");
+router.get("/coming-soon", (req, res) => {
+  res.render("coming-soon");
 });
-
-
 
 // router.get("/create", (req, res) => {
 //   res.render("create");

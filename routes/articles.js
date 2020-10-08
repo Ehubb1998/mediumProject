@@ -8,17 +8,12 @@ const { requireAuth } = require("../auth");
 const { router } = require("../app");
 const userRouter = require("./users");
 
-
-
-
 articleRouter.use(express.urlencoded());
 
-
 articleRouter.get("/", async (req, res) => {
-  const articles = await Article.findAll({include: "User"});
+  const articles = await Article.findAll({ include: "User" });
   res.render("display-articles", { articles });
 });
-
 
 articleRouter.get("/new", (req, res) => {
   res.render("create-article");
@@ -41,20 +36,17 @@ const articleNotFoundError = (articleId) => {
   return error;
 };
 
-
-
 articleRouter.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
-    const id = parseInt(req.params.id, 10)
+    const id = parseInt(req.params.id, 10);
     const article = await Article.findByPk(id, {
-      include: {model: Comment, as: 'comments', include: 'User'}
+      include: { model: Comment, as: "comments", include: "User" },
     });
-    console.log(JSON.stringify(article))
+    console.log(JSON.stringify(article));
     if (article === null) {
       next(articleNotFoundError(article));
     } else {
-
       // res.json({ articleId });
       res.render("display-article", {
         article,
@@ -62,7 +54,6 @@ articleRouter.get(
       });
 
       // res.render("display-article", { article });
-
     }
   })
 );
@@ -93,9 +84,9 @@ articleRouter.get(
     const article = await Article.findByPk(req.params.id);
     const comments = await Comment.findAll({
       where: {
-        articleId: req.params.id
-      }
-    })
+        articleId: req.params.id,
+      },
+    });
 
     res.render("display-article", {
       title: article.title,

@@ -1,7 +1,6 @@
 const app = {
   init: () => {
     app.checkAuth();
-    app.verifyLogin();
     app.logOut();
   },
 
@@ -19,25 +18,37 @@ const app = {
       );
 
       const data = await res.json();
-      const user = data.user.email;
+      const user = data.user.userName;
       if (!res.ok) {
         throw res;
       } else {
-        console.log(data.user.email);
+        app.authorized(user);
+        return;
       }
     } catch (error) {
       console.error(error);
     }
+
+    app.limited();
   },
 
-  verifyLogin: () => {
-    const token = localStorage.getItem("MEDIUM_ACCESS_TOKEN");
-    if (!token) {
-      document.querySelectorAll(".limited").forEach((ele) => {
-        ele.classList.add("unauthorized");
-      });
-    } else {
-    }
+  limited: () => {
+    document.querySelectorAll(".limited").forEach((ele) => {
+      ele.className = "unauthorized";
+    });
+    document.getElementById("start").addEventListener("click", () => {
+      document.querySelector(".loginPrompt").classList.remove("unauthorized");
+    });
+    document.querySelector(".loginPrompt").addEventListener("click", () => {
+      document.querySelector(".loginPrompt").classList.add("unauthorized");
+    });
+  },
+
+  authorized: (data) => {
+    document.getElementById("welcome-msg").innerText = `Good Afternoon ${data}`;
+    document.querySelectorAll(".login").forEach((ele) => {
+      ele.classList.add("unauthorized");
+    });
   },
 
   logOut: () => {
