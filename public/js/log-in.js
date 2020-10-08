@@ -55,11 +55,13 @@ logInForm.addEventListener("submit", async (e) => {
         //   userErr = false;
         // }
         const invalidCred = document.createElement("li");
-        const mainHeader = document.querySelector(".log-in");
+        const mainHeader = document.querySelector(".mainHeader");
+        const errDiv = document.querySelector(".errDiv");
         console.log(mainHeader.length);
         invalidCred.innerHTML = `${errorJSON.errors}`;
         invalidCred.setAttribute("style", "font-size: 20px");
-        mainHeader.appendChild(invalidCred);
+        errDiv.innerHTML = "";
+        errDiv.appendChild(invalidCred);
         // alert(
         //   "Something went wrong. Pleae check your internet connection and try again!"
         // );

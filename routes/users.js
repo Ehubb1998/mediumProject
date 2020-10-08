@@ -54,8 +54,8 @@ userRouter.post(
   );
   
 const passwordVali = function (password, user) {
-  const result = user.validate(password);
-  console.log(result);
+  const result = user.validatePassword(password);
+  // console.log(result);
   return result;
 };
 
@@ -79,7 +79,7 @@ userRouter.post(
       return next(err);
     } else {
       const valiPass = passwordVali(password, user);
-      console.log(valiPass);
+      // console.log(valiPass);
       if (valiPass === false) {
         const err = new Error("Login failed");
         err.status = 401;
