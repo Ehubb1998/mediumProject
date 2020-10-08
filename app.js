@@ -18,7 +18,6 @@ app.use("/users", userRouter);
 app.use("/articles", articleRouter);
 app.use(`/articles`, commentRouter);
 
-
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "pug");
 
