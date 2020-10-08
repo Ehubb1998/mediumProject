@@ -4,15 +4,6 @@ block content
   body
     include includes/navigation
 
-    div.loginPrompt.unauthorized
-      div.loginPrompt__inner
-        h2 Join Medium.
-        p Create an account to receive great stories in your inbox, personalize your homepage, and follow authors and topics that you love.
-        a(href="/sign-up") Sign up with email
-        p Already have an account?
-          a(href="/log-in")    Sign in.
-
-
     div.content
       div.content__section1
         div.content__article--A Article Box Carousel Top
@@ -23,4 +14,5 @@ block content
       div.content__section3
         div.content__article--C Article Box Carousel Bottom
         div.content__categories--D Reading List
+  script(src="/js/log-in.js")
   script(src="/js/index.js")

@@ -15,9 +15,20 @@ nav.home-navigation
         include user-dropdown
 
 div.loginPrompt.unauthorized
-      div.loginPrompt__inner
-        h2 Join Medium.
-        p Create an account to receive great stories in your inbox, personalize your homepage, and follow authors and topics that you love.
-        a(href="/sign-up") Sign up with email
-        p Already have an account?
-          a(href="/log-in")    Sign in.
+  div.loginPrompt__inner
+    h2 Join Medium.
+    p Create an account to receive great stories in your inbox, personalize your homepage, and follow authors and topics that you love.
+    a(href="/sign-up") Sign up with email
+    p Already have an account?
+      button.signIn_button Sign in.
+
+div.loginPage.unauthorized
+  div.loginPage__inner
+    h2 Sign in to Medium
+    form.log-in-form
+      label(for="userName") Username
+      input(type="text" name="userName" required)
+      label(for="password") Password
+      input(type="password" name="password" required)
+      button(type="submit") Continue
+  button(id="signIn__return") < All sign in options

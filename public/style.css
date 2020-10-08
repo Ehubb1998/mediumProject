@@ -10,6 +10,13 @@ body {
   margin: auto;
 }
 
+input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgb(206, 206, 206);
+  outline: none;
+}
+
 #userName {
   margin: 2em;
 }

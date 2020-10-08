@@ -5,6 +5,7 @@ logInForm.addEventListener("submit", async (e) => {
   const userName = formData.get("userName");
   const password = formData.get("password");
   const body = { userName, password };
+  console.log(body);
 
   try {
     const res = await fetch("http://localhost:8080/users/token", {
@@ -53,4 +54,13 @@ logInForm.addEventListener("submit", async (e) => {
       errorsContainer.innerHTML = errorsHtml.join("");
     }
   }
+});
+
+document.querySelector(".signIn_button").addEventListener("click", () => {
+  document.querySelector(".loginPage").classList.remove("unauthorized");
+});
+
+document.getElementById("signIn__return").addEventListener("click", () => {
+  document.querySelector(".loginPage").classList.add("unauthorized");
+  document.querySelector(".loginPrompt").classList.remove("unauthorized");
 });
