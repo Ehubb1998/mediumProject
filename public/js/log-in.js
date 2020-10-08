@@ -29,6 +29,7 @@ logInForm.addEventListener("submit", async (e) => {
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();
+      // console.log(errorJSON);
       const errorsContainer = document.querySelector(".errors-container");
       let errorsHtml = [
         `
@@ -47,9 +48,21 @@ logInForm.addEventListener("submit", async (e) => {
                     `
         );
       } else {
-        alert(
-          "Something went wrong. Pleae check your internet connection and try again!"
-        );
+        // let userErr;
+        // console.log(errorJSON.errors);
+        // if (userErr === false) return;
+        // if (errorJSON.user === false) {
+        //   userErr = false;
+        // }
+        const invalidCred = document.createElement("li");
+        const mainHeader = document.querySelector(".log-in");
+        console.log(mainHeader.length);
+        invalidCred.innerHTML = `${errorJSON.errors}`;
+        invalidCred.setAttribute("style", "font-size: 20px");
+        mainHeader.appendChild(invalidCred);
+        // alert(
+        //   "Something went wrong. Pleae check your internet connection and try again!"
+        // );
       }
       errorsContainer.innerHTML = errorsHtml.join("");
     }

@@ -51,7 +51,13 @@ userRouter.post(
       token,
     });
   })
-);
+  );
+  
+const passwordVali = function (password, user) {
+  const result = user.validate(password);
+  console.log(result);
+  return result;
+};
 
 userRouter.post(
   "/token",
@@ -64,16 +70,28 @@ userRouter.post(
       },
     });
 
-    if (!user || !user.validate(password)) {
+    if (user === null) {
       const err = new Error("Login failed");
       err.status = 401;
       err.title = "Login failed";
-      err.errors = "The provided credentials were invalid.";
+      err.errors = "The provided username does not exist.";
+      err.user = false;
       return next(err);
+    } else {
+      const valiPass = passwordVali(password, user);
+      console.log(valiPass);
+      if (valiPass === false) {
+        const err = new Error("Login failed");
+        err.status = 401;
+        err.title = "Login failed";
+        err.errors = "The provided password is invalid.";
+        err.password = false;
+        return next(err);
+      }
     }
-
     const token = getUserToken(user);
     res.json({ token, user: { id: user.id } });
+
   })
 );
 
