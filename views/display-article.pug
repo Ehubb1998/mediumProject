@@ -1,6 +1,7 @@
 extends layout.pug
 
 block content
+  include includes/navigation
   h1= article.title
   div Claps: #{article.claps}
   div= article.body

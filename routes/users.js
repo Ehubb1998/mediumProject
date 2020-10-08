@@ -51,7 +51,13 @@ userRouter.post(
       token,
     });
   })
-);
+  );
+  
+const passwordVali = function (password, user) {
+  const result = user.validatePassword(password);
+  // console.log(result);
+  return result;
+};
 
 userRouter.post(
   "/token",
@@ -64,20 +70,47 @@ userRouter.post(
       },
     });
 
-    if (!user || !user.validate(password)) {
+    if (user === null) {
       const err = new Error("Login failed");
       err.status = 401;
       err.title = "Login failed";
-      err.errors = "The provided credentials were invalid.";
+      err.errors = "The provided username does not exist.";
+      err.user = false;
       return next(err);
+    } else {
+      const valiPass = passwordVali(password, user);
+      // console.log(valiPass);
+      if (valiPass === false) {
+        const err = new Error("Login failed");
+        err.status = 401;
+        err.title = "Login failed";
+        err.errors = "The provided password is invalid.";
+        err.password = false;
+        return next(err);
+      }
     }
-
     const token = getUserToken(user);
     res.json({ token, user: { id: user.id } });
+
   })
 );
 
 userRouter.get("/:id", requireAuth, async (req, res, next) => {
+  const user = await User.findOne({
+    where: {
+      id: req.params.id,
+    },
+  });
+
+  if (user) {
+    res.send({ user });
+  } else {
+    next();
+  }
+});
+
+// Public Data for User Information (Ask JM about getting rid of HashedPass)
+userRouter.get("/publicinfo/:id", async (req, res, next) => {
   const user = await User.findOne({
     where: {
       id: req.params.id,

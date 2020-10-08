@@ -10,9 +10,13 @@ const userRouter = require("./users");
 
 articleRouter.use(express.urlencoded());
 
-articleRouter.get("/", async (req, res) => {
+articleRouter.get("/", async (req, res, next) => {
   const articles = await Article.findAll({ include: "User" });
-  res.render("display-articles", { articles });
+  if (articles) {
+    res.send({ articles });
+  } else {
+    next();
+  }
 });
 
 articleRouter.get("/new", (req, res) => {
@@ -38,6 +42,7 @@ const articleNotFoundError = (articleId) => {
   return error;
 };
 
+// Retrieve JSON of Specific Article in Database
 articleRouter.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
@@ -45,17 +50,13 @@ articleRouter.get(
     const article = await Article.findByPk(id, {
       include: { model: Comment, as: "comments", include: "User" },
     });
-    //console.log(JSON.stringify(article));
     if (article === null) {
       next(articleNotFoundError(article));
     } else {
-      // res.json({ articleId });
-      res.render("display-article", {
+      res.send({
         article,
         comments: article.comments,
       });
-
-      // res.render("display-article", { article });
     }
   })
 );
@@ -80,23 +81,23 @@ articleRouter.get("/new", (req, res) => {
   res.render("create-article");
 });
 
-articleRouter.get(
-  "/:id",
-  asyncHandler(async (req, res) => {
-    const article = await Article.findByPk(req.params.id);
-    const comments = await Comment.findAll({
-      where: {
-        articleId: req.params.id,
-      },
-    });
+// articleRouter.get(
+//   "/:id",
+//   asyncHandler(async (req, res) => {
+//     const article = await Article.findByPk(req.params.id);
+//     const comments = await Comment.findAll({
+//       where: {
+//         articleId: req.params.id,
+//       },
+//     });
 
-    res.render("display-article", {
-      title: article.title,
-      body: article.body,
-      comments: comments,
-    });
-  })
-);
+//     res.render("create-article", {
+//       title: article.title,
+//       body: article.body,
+//       comments: comments,
+//     });
+//   })
+// );
 
 articleRouter.put(
   "/:id(\\d+)",
