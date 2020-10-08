@@ -14,20 +14,14 @@ followRouter.use(express.urlencoded());
 followRouter.post("/:id(\\d+)/addFollow", asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
 
-    const author = await User.findByPk(id);
-    const follower = await User.findByPk(id);
-
-    await author.addFollower(follower);
-    await author.save();
-    // res.json({ author });
+    const { userId } = req.body;
 
     const follow = await Following.create({
-        authorId: author,
-        followerId: follower
+        authorId: id,
+        followerId: userId
     });
 
-    res.redirect('/')
-
+    res.json({ follow })
 }));
 
 followRouter.get("/:id(\\d+)/followedAuthors", asyncHandler(async (req, res) => {
@@ -52,6 +46,12 @@ followRouter.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
     });
     const followers = author.followers.map((follower) => ({username: follower.username, email: follower.email}));
     res.json({ followers });
+}));
+
+followRouter.get("/:id(\\d+)/followers/test", asyncHandler(async (req, res) => {
+        const id = parseInt(req.params.id, 10);
+        const author = await User.findByPk(id);
+        res.render('follow-test', { author });
 }));
 
 module.exports = followRouter;
