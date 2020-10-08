@@ -2,7 +2,7 @@ const express = require("express");
 const articleRouter = express.Router();
 const { asyncHandler } = require("../utils");
 const db = require("../db/models");
-const { Article } = db;
+const { Article, User, Comment } = db;
 const { check, validationResult } = require("express-validator");
 const { requireAuth } = require("../auth");
 const { router } = require("../app");
@@ -41,38 +41,27 @@ const articleNotFoundError = (articleId) => {
   return error;
 };
 
-articleRouter.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const articles = await Article.findall({
-      include: [{ model: User, as: "user", attributes: ["userName"] }],
-      order: [["createdAt", "DESC"]],
-      attributes: ["title"],
-    });
-    res.json({ articles });
-  })
-);
+
 
 articleRouter.get(
   "/:id(\\d+)",
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res, next) => {
     const id = parseInt(req.params.id, 10)
     const article = await Article.findByPk(id, {
-      include: "User"
+      include: {model: Comment, as: 'comments', include: 'User'}
     });
-    console.log(article)
+    console.log(JSON.stringify(article))
     if (article === null) {
       next(articleNotFoundError(article));
     } else {
 
       // res.json({ articleId });
       res.render("display-article", {
-        title: article.title,
-        body: article.body,
+        article,
         comments: article.comments,
       });
 
-      res.render("display-article", { article });
+      // res.render("display-article", { article });
 
     }
   })
@@ -102,10 +91,16 @@ articleRouter.get(
   "/:id",
   asyncHandler(async (req, res) => {
     const article = await Article.findByPk(req.params.id);
+    const comments = await Comment.findAll({
+      where: {
+        articleId: req.params.id
+      }
+    })
+
     res.render("display-article", {
       title: article.title,
       body: article.body,
-      comments: article.comments,
+      comments: comments,
     });
   })
 );
