@@ -23,6 +23,7 @@ signUpForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const bio = formData.get("bio");
   const body = { email, password, userName, bio };
+  console.log(body);
   try {
     const res = await fetch("http://localhost:8080/users", {
       method: "POST",
