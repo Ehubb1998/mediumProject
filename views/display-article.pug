@@ -7,8 +7,15 @@ html(lang="en")
         link(rel="stylesheet" href="style.css")
     body
         h1= article.title
-        h3= article.User.userName
         div Claps: #{article.claps}
         div= article.body
-        if article.comments
-                    div= article.comments
+
+        each comment in comments
+            div
+                div= comment.User.userName
+                div= comment.comment
+
+
+        //- a(href=`http://localhost:8080/articles/${article.id}/comment`)
+        //-     div Tell us what you think!
+            //- button(id="leave-a-comment") Comment
