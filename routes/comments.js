@@ -23,7 +23,7 @@ commentRouter.post("/:id(\\d+)/comments", requireAuth, asyncHandler( async(req, 
       userId: req.user.id,
       articleId: req.params.id
     });
-  
+
     res.redirect()
 }));
 module.exports = commentRouter;
