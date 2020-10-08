@@ -109,4 +109,19 @@ userRouter.get("/:id", requireAuth, async (req, res, next) => {
   }
 });
 
+// Public Data for User Information (Ask JM about getting rid of HashedPass)
+userRouter.get("/publicinfo/:id", async (req, res, next) => {
+  const user = await User.findOne({
+    where: {
+      id: req.params.id,
+    },
+  });
+
+  if (user) {
+    res.send({ user });
+  } else {
+    next();
+  }
+});
+
 module.exports = userRouter;
