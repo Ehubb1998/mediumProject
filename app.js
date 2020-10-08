@@ -24,4 +24,24 @@ app.use((req, res, next) => {
   next(err);
 });
 
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(err.status || 500);
+  const errMsg = err.errors;
+  // console.log(errMsg);
+  if (err.user = false) {
+    res.json({
+      title: err.title,
+      errors: errMsg,
+      user: false
+    });
+  } else {
+    res.json({
+      title: err.title,
+      errors: errMsg,
+      password: false
+    });
+  }
+});
+
 module.exports = app;
