@@ -1,5 +1,6 @@
 extends layout.pug
 
+<<<<<<< HEAD
 body content
   body
    each article in articles
@@ -13,3 +14,12 @@ body content
         // if able to clip article, can display partially
         if article.comments
           div= article.comments
+=======
+                a(href=`http://localhost:8080/articles/${article.id}`)
+                    h1= article.title
+                h3= article.User.userName
+                div Claps: #{article.claps}
+                //- div= article.body
+                    // if able to clip article, can display partially
+                
+>>>>>>> master

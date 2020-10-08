@@ -8,7 +8,7 @@ createArticle.addEventListener("submit", async (e) => {
   const claps = 0;
   const userId = localStorage.getItem("MEDIUM_USER_ID");
   const data = { title, body, claps, userId };
-  console.log(data);
+
   try {
     const res = await fetch("http://localhost:8080/articles", {
       method: "POST",

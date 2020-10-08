@@ -14,9 +14,7 @@ router.get("/log-in", (req, res) => {
   res.render("log-in");
 });
 
-router.get("/articles", (req, res) => {
-  res.send("Articles Homepage");
-});
+
 
 router.get("/coming-soon", (req, res) => {
   res.render("coming-soon");
