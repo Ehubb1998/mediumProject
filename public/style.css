@@ -10,6 +10,16 @@ body {
   margin: auto;
 }
 
+.followButton {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border: 1px solid rgb(89, 164, 177);
+  border-radius: 4px;
+  color: rgb(89, 164, 177);
+  margin: 5px;
+}
+
 input {
   background: transparent;
   border: none;
