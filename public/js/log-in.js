@@ -48,12 +48,6 @@ logInForm.addEventListener("submit", async (e) => {
                     `
         );
       } else {
-        // let userErr;
-        // console.log(errorJSON.errors);
-        // if (userErr === false) return;
-        // if (errorJSON.user === false) {
-        //   userErr = false;
-        // }
         const invalidCred = document.createElement("li");
         const mainHeader = document.querySelector(".mainHeader");
         const errDiv = document.querySelector(".errDiv");
@@ -62,9 +56,6 @@ logInForm.addEventListener("submit", async (e) => {
         invalidCred.setAttribute("style", "font-size: 20px");
         errDiv.innerHTML = "";
         errDiv.appendChild(invalidCred);
-        // alert(
-        //   "Something went wrong. Pleae check your internet connection and try again!"
-        // );
       }
       errorsContainer.innerHTML = errorsHtml.join("");
     }
