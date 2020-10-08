@@ -1,6 +1,6 @@
 const express = require("express");
 const articleRouter = express.Router();
-const { asyncHandler } = require("../utils");
+const { asyncHandler, handleValidationErrors } = require("../utils");
 const db = require("../db/models");
 const { Article, User, Comment } = db;
 const { check, validationResult } = require("express-validator");
@@ -22,10 +22,12 @@ const articleValidations = [
   check("title")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a title.")
-    .isLength({ max: 100 }),
+    .isLength({ max: 100 })
+    .withMessage("Title must not exceed 100 characters."),
   check("body")
     .exists({ checkFalsy: true })
     .withMessage("Please provide article content."),
+    handleValidationErrors,
 ];
 
 const articleNotFoundError = (articleId) => {
@@ -43,7 +45,7 @@ articleRouter.get(
     const article = await Article.findByPk(id, {
       include: { model: Comment, as: "comments", include: "User" },
     });
-    console.log(JSON.stringify(article));
+    //console.log(JSON.stringify(article));
     if (article === null) {
       next(articleNotFoundError(article));
     } else {
