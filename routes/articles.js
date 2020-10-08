@@ -2,21 +2,22 @@ const express = require("express");
 const articleRouter = express.Router();
 const { asyncHandler } = require("../utils");
 const db = require("../db/models");
-const { Article } = db;
+const { Article, User, Comment } = db;
 const { check, validationResult } = require("express-validator");
 const { requireAuth } = require("../auth");
 const { router } = require("../app");
 const userRouter = require("./users");
 
 articleRouter.use(express.urlencoded());
-// articleRouter.use(requireAuth);
 
-articleRouter.get("/", (req, res) => {
-    res.send("Articles Homepage");
-})
+articleRouter.get("/", async (req, res) => {
+  const articles = await Article.findAll({ include: "User" });
+  res.render("display-articles", { articles });
+});
+
 articleRouter.get("/new", (req, res) => {
-    res.render("create-article");
-})
+  res.render("create-article");
+});
 const articleValidations = [
   check("title")
     .exists({ checkFalsy: true })
@@ -35,32 +36,24 @@ const articleNotFoundError = (articleId) => {
   return error;
 };
 
-
-articleRouter.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const articles = await Article.findall({
-      include: [{ model: User, as: "user", attributes: ["userName"] }],
-      order: [["createdAt", "DESC"]],
-      attributes: ["title"],
-    });
-    res.json({ articles });
-  })
-);
-
 articleRouter.get(
   "/:id(\\d+)",
-  asyncHandler(async (req, res) => {
-    const articleId = await Article.findByPk(req.params.id);
-    if (articleId === null) {
-      next(articleNotFoundError(articleId));
+  asyncHandler(async (req, res, next) => {
+    const id = parseInt(req.params.id, 10);
+    const article = await Article.findByPk(id, {
+      include: { model: Comment, as: "comments", include: "User" },
+    });
+    console.log(JSON.stringify(article));
+    if (article === null) {
+      next(articleNotFoundError(article));
     } else {
       // res.json({ articleId });
       res.render("display-article", {
-        title: article.title,
-        body: article.body,
-        comments: article.comments
+        article,
+        comments: article.comments,
       });
+
+      // res.render("display-article", { article });
     }
   })
 );
@@ -75,7 +68,7 @@ articleRouter.post(
     const article = await Article.create({
       title,
       body,
-      userId: req.user.id
+      userId: req.user.id,
     });
     res.json({ article });
   })
@@ -85,12 +78,23 @@ articleRouter.get("/new", (req, res) => {
   res.render("create-article");
 });
 
-articleRouter.get("/:id", asyncHandler( async(req, res) => {
-  const article = await Article.findByPk(req.params.id);
-  res.render("display-article",
-  { title: article.title, body: article.body, comments: article.comments })
-}));
+articleRouter.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const article = await Article.findByPk(req.params.id);
+    const comments = await Comment.findAll({
+      where: {
+        articleId: req.params.id,
+      },
+    });
 
+    res.render("display-article", {
+      title: article.title,
+      body: article.body,
+      comments: comments,
+    });
+  })
+);
 
 articleRouter.put(
   "/:id(\\d+)",

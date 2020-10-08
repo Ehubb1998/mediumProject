@@ -6,9 +6,10 @@ const emailField = document.getElementById("emailField");
 const passwordField = document.getElementById("passwordField");
 const cpField = document.getElementById("cpField");
 
-demoButton.addEventListener("click", e => {
+demoButton.addEventListener("click", (e) => {
   userField.value = "Tom2020";
-  bioField.innerHTML = "I'm just here for the BABE vibes. I heard there was going to be cake.";
+  bioField.innerHTML =
+    "I'm just here for the BABE vibes. I heard there was going to be cake.";
   emailField.value = "tomloan@gmail.com";
   passwordField.value = "tomloan2020";
   cpField.value = "tomloan2020";

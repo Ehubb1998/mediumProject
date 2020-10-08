@@ -1,13 +1,25 @@
 const express = require("express");
-const indexRouter = express.Router();
-const bcrypt = require("bcryptjs");
-const { check } = require("express-validator");
-const { asyncHandler, handleValidationErrors } = require("../utils");
-const db = require("../db/models");
-const { User } = db;
+const router = express.Router();
+const { getUserToken, requireAuth } = require("../auth");
 
-indexRouter.get("/", (req, res) => {
-  res.render("splash");
+router.get("/", async (req, res) => {
+  res.render("index");
 });
 
-module.exports = indexRouter;
+router.get("/sign-up", (req, res) => {
+  res.render("sign-up");
+});
+
+router.get("/coming-soon", (req, res) => {
+  res.render("coming-soon");
+});
+
+// router.get("/create", (req, res) => {
+//   res.render("create");
+// });
+
+// router.get("/profile", (req, res) => {
+//   res.render("profile");
+// });
+
+module.exports = router;

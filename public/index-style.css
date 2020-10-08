@@ -1,8 +1,35 @@
 .home-navigation {
   display: flex;
   justify-content: space-between;
+  margin: 50px;
 }
 
+.svg__logo {
+  width: 111.5px;
+  height: 22px;
+  padding-right: 15px;
+  border-right: 1px solid rgb(206, 206, 206);
+}
+
+.svg__icon {
+  width: 25px;
+  height: 25px;
+}
+
+.home-navigation__end {
+  margin: 0;
+  display: flex;
+}
+
+#welcome-msg {
+  font-weight: 500;
+  padding-left: 15px;
+  margin: 0;
+}
+
+.home-navigation__start {
+  display: flex;
+}
 .content__section1 {
   display: grid;
   grid-template-areas: "art art user" "art art topic";
@@ -61,6 +88,127 @@
 }
 
 .unauthorized {
-  color: red;
   display: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  background-color: blueviolet;
+  border-radius: 50%;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+}
+
+.dropdown__content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  text-align: left;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown__content {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.loginPrompt {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -250px; /* Remember to make negative half of h/w */
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  border: 150px;
+}
+
+.loginPrompt__inner {
+  margin: 50px;
+}
+
+.loginPage {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -250px; /* Remember to make negative half of h/w */
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  border: 150px;
+}
+
+.loginPage__inner {
+  margin: 50px;
+}
+
+.loginPage__inner button {
+  width: 100px;
+  height: 33px;
+  margin: auto;
+  margin-top: 30px;
+  color: white;
+  background-color: black;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  transition-duration: 0.4s;
+}
+
+.loginPage__inner button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.loginPage__inner input {
+  width: 215px;
+  margin: auto;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.log-in-form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+#signIn__return {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+#start {
+  background-color: rgba(3, 168, 124, 1);
+  width: 120px;
+  height: 36px;
+  color: white;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  transition-duration: 0.4s;
+}
+
+#start:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }

@@ -1,5 +1,20 @@
-form {
-  font-family: "Courier New", Courier, monospace;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+
+body {
+  font-family: "Noto Sans JP", "Courier New", Courier, monospace;
+}
+
+.coming-soon {
+  width: 500px;
+  text-align: center;
+  margin: auto;
+}
+
+input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgb(206, 206, 206);
+  outline: none;
 }
 
 #userName {
@@ -32,14 +47,6 @@ form {
   box-shadow: 0.1em 0.1em 0.1em gray;
 }
 
-.new-user-page {
-  font-family: "Courier New", Courier, monospace;
-}
-
 .form-container {
   background-color: darkgray;
-}
-
-#bioField {
-  height: 2em;
 }

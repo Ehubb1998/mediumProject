@@ -1,35 +1,33 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Create a new User
-        link(rel="stylesheet" href="/style.css")
-    body
-        h1.new-user-page New User
-        div.form-container
-            form.create-user-form
+extends layout.pug
 
-                div#userName
-                    label(for="userName") User Name
-                    input(name="userName" id="userField" class="form" type="text" placeHolder="Babe McGee" required)
+block content
+  body
+    include includes/navigation
+    h1.new-user-page Sign-Up
+    div.form-container
+      form.create-user-form
 
-                div#bio
-                    label(for="bio") Bio
-                    textarea(name="bio" id="bioField" class="form" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
+        div#userName
+          label(for="userName") User Name
+          input(name="userName" id="userField" class="form" type="text" placeHolder="Babe McGee" required)
 
-                div#email
-                    label(for="email") Email
-                    input(name="email" id="emailField" class="form" type="email" placeHolder="babe@thepig.com" required)
+        div#bio
+          label(for="bio") Bio
+          textarea(name="bio" id="bioField" class="form" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
 
-                div#password
-                    label(for="password") Password
-                    input(name="password" id="passwordField" class="form" type="password" placeHolder="password" required)
+        div#email
+          label(for="email") Email
+          input(name="email" id="emailField" class="form" type="email" placeHolder="babe@thepig.com" required)
 
-                div#confirmedPassword
-                    label(for="confirmedPassword") Confirmed
-                    input(name="confirmedPassword" id="cpField" class="form" type="password" placeHolder="password" required)
-                div#button
-                    button(type="sumbit" class=".user-submit") Submit
-                    button(type="button" id="demo-login") Demo
-            script(src="/js/create-user.js")
+        div#password
+          label(for="password") Password
+          input(name="password" id="passwordField" class="form" type="password" placeHolder="password" required)
+
+        div#confirmedPassword
+          label(for="confirmedPassword") Confirmed
+          input(name="confirmedPassword" id="cpField" class="form" type="password" placeHolder="password" required)
+        div#button
+          button(type="sumbit" class=".user-submit") Submit
+          button(type="button" id="demo-login") Demo
+    script(src="/js/create-user.js")
+    script(src="/js/index.js")

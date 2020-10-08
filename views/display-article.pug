@@ -1,11 +1,15 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title= title
-        link(rel="stylesheet" href="style.css")
-    body
-        h1= title
-        div= body
-        div= if comments? =comments : ""
+extends layout.pug
+
+block content
+  h1= article.title
+  div Claps: #{article.claps}
+  div= article.body
+    each comment in comments
+      div
+        div= comment.User.userName
+        div= comment.comment
+
+
+        //- a(href=`http://localhost:8080/articles/${article.id}/comment`)
+        //-     div Tell us what you think!
+        //- button(id="leave-a-comment") Comment
