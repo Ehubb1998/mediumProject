@@ -62,5 +62,5 @@ h1, a {
 .userName {
     font-size: 3rem;
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
-    padding: 1rem 2rem 0;
+    padding: 0 2rem 0;
 }
