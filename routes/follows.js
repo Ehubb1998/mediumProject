@@ -32,8 +32,9 @@ followRouter.get("/:id(\\d+)/followedAuthors", asyncHandler(async (req, res) => 
             as: 'followedAuthors'
         }
     });
-    const followedAuthors = author.followedAuthors.map((author) => ({username: author.username, email: author.email}));
+    const followedAuthors = author.followedAuthors.map((author) => ({username: author.userName, email: author.email}));
     res.json({ followedAuthors });
+    console.log(followedAuthors.length);
 }));
 
 followRouter.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
