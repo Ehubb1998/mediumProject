@@ -23,6 +23,10 @@ app.use("/users", followRouter)
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "pug");
 
+app.get('/profile', (req, res) => {
+  res.render('profile-page')
+})
+
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {
   const err = new Error("The requested resource couldn't be found.");

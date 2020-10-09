@@ -1,0 +1,30 @@
+extends layout.pug
+
+block content
+  body
+    include includes/navigation
+    div.outerOuterLmao
+        div.outerContainer
+            div.profileContainer
+                div.userName Bonnie Hardie
+                div.bio I was born in Nashville TN and am a musician. Howdy y'all!
+                div.followers 3.4 million followers
+            div.pictureContainer
+                div.picture
+                    img.kanye(src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0OTkwNDUxOTQ5MDUzNDQ3/kanye-west-attends-the-christian-dior-show-as-part-of-the-paris-fashion-week-womenswear-fall-winter-2015-2016-on-march-6-2015-in-paris-france-photo-by-dominique-charriau-wireimage-square.jpg", alt="hopefully a pic")
+            div.articlesContainer
+                    div.article
+                        a(href=`http://localhost:8080/`)
+                            h1 Title of Article 1
+                        div.teaser You'll Never Skip Flossing Again Once You Read This
+                        div.claps Claps: 0
+                    div.article
+                        a(href=`http://localhost:8080/`)
+                            h1 Title of Article 2
+                        div.teaser You'll Never Skip Flossing Again Once You Read This
+                        div.claps Claps: 0
+                    div.article
+                        a(href=`http://localhost:8080/`)
+                            h1 Title of Article 3
+                        div.teaser You'll Never Skip Flossing Again Once You Read This
+                        div.claps Claps: 0
