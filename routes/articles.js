@@ -26,12 +26,12 @@ const articleValidations = [
   check("title")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a title.")
-    .isLength({ max: 100 })
-    .withMessage("Title must not exceed 100 characters."),
+    .isLength({ max: 10 })
+    .withMessage("Title must not exceed 50 characters."),
   check("body")
     .exists({ checkFalsy: true })
     .withMessage("Please provide article content."),
-    handleValidationErrors,
+  handleValidationErrors,
 ];
 
 const articleNotFoundError = (articleId) => {
