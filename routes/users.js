@@ -52,7 +52,7 @@ userRouter.post(
     });
   })
   );
-  
+
 const passwordVali = function (password, user) {
   const result = user.validatePassword(password);
   // console.log(result);
@@ -95,7 +95,16 @@ userRouter.post(
   })
 );
 
-userRouter.get("/:id", requireAuth, async (req, res, next) => {
+// userRouter.get("/:id(\\d+)/profile", asyncHandler(async (req, res, next) => {
+//   const userId = parseInt(req.params.id, 10);
+//   const user = await User.findByPk(userId, {
+//     include: Article
+//   });
+//   console.log(user)
+//   res.render("profile-page", { user });
+// }));
+
+userRouter.get("/:id", async (req, res, next) => {
   const user = await User.findOne({
     where: {
       id: req.params.id,
@@ -108,6 +117,8 @@ userRouter.get("/:id", requireAuth, async (req, res, next) => {
     next();
   }
 });
+
+
 
 // Public Data for User Information (Ask JM about getting rid of HashedPass)
 userRouter.get("/publicinfo/:id", async (req, res, next) => {
@@ -123,5 +134,19 @@ userRouter.get("/publicinfo/:id", async (req, res, next) => {
     next();
   }
 });
+
+userRouter.get("/profile/:id", asyncHandler(async (req, res, next) => {
+  const user = await User.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: 'Articles'
+  });
+  if (user) {
+    res.render("profile-page", { user } );
+  } else {
+    next();
+  }
+}));
 
 module.exports = userRouter;

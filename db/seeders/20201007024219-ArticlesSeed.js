@@ -14,7 +14,7 @@ module.exports = {
           title: faker.company.catchPhraseDescriptor(),
           body: faker.lorem.paragraphs(),
           claps: faker.random.number(),
-          userId: random(10),
+          userId: 42,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

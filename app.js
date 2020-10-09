@@ -11,6 +11,7 @@ const articleRouter = require("./routes/articles");
 const userRouter = require("./routes/users");
 const indexRouter = require("./routes/index");
 
+
 app.use(bearerToken());
 app.use(morgan("dev"));
 app.use(express.json());
@@ -23,9 +24,6 @@ app.use("/users", followRouter)
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "pug");
 
-app.get('/profile', (req, res) => {
-  res.render('profile-page')
-})
 
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {

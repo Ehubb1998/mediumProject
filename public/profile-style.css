@@ -2,7 +2,8 @@ h1, a {
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
     font-size: 2rem;
     text-decoration: none;
-    color: #2b2b2b;
+    color: #413f3f;
+    font-weight:normal;
     margin: 0;
 }
 .articlesContainer {
@@ -20,10 +21,6 @@ h1, a {
 .claps {
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
     font-size: 0.75rem;
-}
-.followers {
-    padding: 0 0 0 2rem;
-    font-size: 0.75rem
 }
 .kanye {
     border-radius: 50%;
@@ -44,11 +41,13 @@ h1, a {
     display: flex;
     justify-content: center;
 }
+.overflowDiv {
+    overflow: hidden;
+}
 .profileContainer {
     grid-area: a;
     width: 550px;
     height: 150px;
-
 }
 .pictureContainer {
     border: 1px #2b2b2b;
@@ -63,4 +62,5 @@ h1, a {
     font-size: 3rem;
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
     padding: 0 2rem 0;
+    color: #2b2b2b;
 }

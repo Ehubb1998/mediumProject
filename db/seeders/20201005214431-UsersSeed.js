@@ -11,6 +11,8 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: `In west Philadelphia born and raised
+          On the playground was where I spent most of my days`,
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
