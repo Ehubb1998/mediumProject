@@ -85,15 +85,51 @@
 }
 
 .content__section2 {
-  border: 1px solid black;
   width: auto;
   height: auto;
   margin: 80px;
 }
 
 .content__article--B {
-  border: 0.5px solid gray;
+  display: grid;
+  grid-template-areas:
+    "trending1 trending2 trending3"
+    "trending4 trending5 trending6";
+
   height: 200px;
+}
+
+.trending1 {
+  grid-area: trending1;
+}
+
+.trending2 {
+  grid-area: trending2;
+}
+
+.trending3 {
+  grid-area: trending3;
+}
+
+.trending4 {
+  grid-area: trending4;
+}
+
+.trending5 {
+  grid-area: trending5;
+}
+
+.trending6 {
+  grid-area: trending6;
+}
+
+.content__articleB {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content__articleB img {
+  margin-top: 15px;
 }
 
 .content__section3 {
@@ -166,6 +202,7 @@
 
 .loginPrompt {
   position: fixed;
+  z-index: 99;
   width: 500px;
   height: 500px;
   top: 50%;
@@ -184,6 +221,7 @@
 
 .loginPage {
   position: fixed;
+  z-index: 99;
   width: 500px;
   height: 500px;
   top: 50%;
