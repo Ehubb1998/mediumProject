@@ -1,5 +1,4 @@
 const signUpForm = document.querySelector(".create-user-form");
-const demoButton = document.getElementById("demo-login");
 const userField = document.getElementById("userField");
 const bioField = document.getElementById("bioField");
 const emailField = document.getElementById("emailField");
