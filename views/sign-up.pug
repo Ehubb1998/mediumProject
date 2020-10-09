@@ -4,6 +4,7 @@ block content
   body
     include includes/navigation
     h1.new-user-page Sign-Up
+    div.signUpErr
     div.form-container
       form.create-user-form
 
@@ -29,6 +30,5 @@ block content
           
         div#button
           button(type="sumbit" class=".user-submit") Submit
-          button(type="button" id="demo-login") Demo
     script(src="/js/create-user.js")
     script(src="/js/index.js")

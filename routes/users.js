@@ -44,16 +44,15 @@ userRouter.post(
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res, next) => {
     const { userName, email, password, confirmedPassword } = req.body;
-    // console.log(confirmedPassword);
+    console.log(email);
     if (password !== confirmedPassword) {
       const err = new Error("Sign Up Failed");
       err.status = 401;
       err.title = "Sign Up failed";
       err.errors = "Password and Confirmed must match";
       err.confirm = false;
-      console.log("It works in user.js");
       return next(err);
     }
     const hashedPassword = await bcrypt.hash(password, 10);

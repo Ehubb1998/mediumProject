@@ -51,9 +51,9 @@ signUpForm.addEventListener("submit", async (e) => {
       // console.log(errorJSON);
       // const errorsContainer = document.querySelector(".errors-container");
       const signUpHeader = document.querySelector(".new-user-page");
-      const errDiv = document.createElement("div");
+      const signUpErr = document.querySelector(".signUpErr");
       const invalidCred = document.createElement("div");
-      errDiv.innerHTML = "";
+      signUpErr.innerHTML = "";
       let errorsHTML = [
         `
                 <div>
@@ -62,26 +62,23 @@ signUpForm.addEventListener("submit", async (e) => {
                 `,
       ];
       const { errors } = errorJSON;
+      console.log(errors);
       if (errors && Array.isArray(errors)) {
         errorsHTML = errors.map((message) => {
           `<li>${message}</li>`
         });
         invalidCred.setAttribute("style", "font-size: 20px");
-        console.log("It works in create-user.js");
-        console.log(errorsHTML);
         for (let i = 0; i < errorsHTML.length; i++) {
           let errMsg = errorsHTML[i];
           invalidCred.appendChild(errMsg);
         }
         signUpHeader.appendChild(invalidCred);
-        
-        // errorsHtml = errors.map(
-        //   (message) => {`
-        //             <li>
-        //                 ${message}
-        //             </li>
-        //             `
-        //   });
+      } else {
+        const invalidCred2 = document.createElement("li");
+        invalidCred2.setAttribute("style", "font-size: 20px");
+        invalidCred2.innerHTML = errors;
+        signUpErr.appendChild(invalidCred2);
+        // console.log(errDiv);
       }
     }
   }
@@ -89,4 +86,9 @@ signUpForm.addEventListener("submit", async (e) => {
 
 document.querySelector(".signIn_button").addEventListener("click", () => {
   document.querySelector(".loginPage").classList.remove("unauthorized");
+});
+
+document.getElementById("signIn__return").addEventListener("click", () => {
+  document.querySelector(".loginPage").classList.add("unauthorized");
+  document.querySelector(".loginPrompt").classList.remove("unauthorized");
 });

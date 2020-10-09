@@ -24,6 +24,7 @@ createArticle.addEventListener("submit", async (e) => {
 
     window.location.href = "/";
   } catch (err) {
-    console.error(err);
+    const res = await err.json()
+    console.error(res);
   }
 });
