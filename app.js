@@ -30,21 +30,31 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  // console.log(err);
+  console.log("I'm here");
+  console.log(err);
   res.status(err.status || 500);
   const errMsg = err.errors;
   // console.log(errMsg);
-  if (err.user = false) {
+  if (err.user === false) {
     res.json({
       title: err.title,
       errors: errMsg,
       user: false
     });
-  } else {
+  }
+  if (err.password === false) {
     res.json({
       title: err.title,
       errors: errMsg,
       password: false
+    });
+  }
+  if (err.confirm === false) {
+    console.log("It works in app.js");
+    res.json({
+      title: err.title,
+      errors: errMsg,
+      confirm: false
     });
   }
 });

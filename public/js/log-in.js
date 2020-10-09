@@ -51,7 +51,7 @@ logInForm.addEventListener("submit", async (e) => {
         const invalidCred = document.createElement("li");
         const mainHeader = document.querySelector(".mainHeader");
         const errDiv = document.querySelector(".errDiv");
-        console.log(mainHeader.length);
+        // console.log(mainHeader.length);
         invalidCred.innerHTML = `${errorJSON.errors}`;
         invalidCred.setAttribute("style", "font-size: 20px");
         errDiv.innerHTML = "";
