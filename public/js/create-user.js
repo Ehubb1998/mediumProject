@@ -6,6 +6,13 @@ const emailField = document.getElementById("emailField");
 const passwordField = document.getElementById("passwordField");
 const cpField = document.getElementById("cpField");
 
+const checkPassword = () => {
+  if (passwordField.value !== cpField.value) {
+    alert("password fields must match");
+    return;
+  } 
+}
+
 demoButton.addEventListener("click", (e) => {
   userField.value = "Tom2020";
   bioField.innerHTML =
@@ -24,6 +31,7 @@ signUpForm.addEventListener("submit", async (e) => {
   const bio = formData.get("bio");
   const body = { email, password, userName, bio };
   console.log(body);
+  checkPassword();
   try {
     const res = await fetch("http://localhost:8080/users", {
       method: "POST",
