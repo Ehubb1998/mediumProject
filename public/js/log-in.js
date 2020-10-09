@@ -1,4 +1,4 @@
-const logInForm = document.querySelector(".log-in-form");
+var logInForm = document.querySelector(".log-in-form");
 logInForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(logInForm);

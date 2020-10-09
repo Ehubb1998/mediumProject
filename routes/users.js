@@ -94,7 +94,8 @@ userRouter.post(
   })
 );
 
-userRouter.get("/:id", async (req, res, next) => {
+// Please keep auth middleware on this!
+userRouter.get("/:id", requireAuth, async (req, res, next) => {
   const user = await User.findOne({
     where: {
       id: req.params.id,

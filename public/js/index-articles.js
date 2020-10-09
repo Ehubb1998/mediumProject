@@ -1,4 +1,4 @@
-const content = {
+var content = {
   init: () => {
     content.mainArticle();
     content.mainSideArticles();
@@ -183,4 +183,4 @@ const content = {
   },
 };
 
-window.addEventListener("DOMContentLoaded", async () => content.init());
+document.addEventListener("DOMContentLoaded", async () => content.init());

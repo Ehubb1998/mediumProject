@@ -53,37 +53,3 @@ input {
   border-bottom: 1px solid rgb(206, 206, 206);
   outline: none;
 }
-
-#userName {
-  margin: 2em;
-}
-
-#bio {
-  margin: 2em;
-}
-
-#email {
-  margin: 2em;
-}
-
-#password {
-  margin: 2em;
-}
-
-#confirmedPassword {
-  margin: 2em;
-}
-
-#button {
-  margin-left: 2em;
-}
-
-#button:hover {
-  cursor: pointer;
-  transform: translateY(-0.15em);
-  box-shadow: 0.1em 0.1em 0.1em gray;
-}
-
-.form-container {
-  background-color: darkgray;
-}
