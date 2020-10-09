@@ -26,6 +26,11 @@ img {
   opacity: 0.9;
 }
 
+.pageBreak {
+  width: 100%;
+  border-top: 1px solid rgb(206, 206, 206);
+}
+
 .coming-soon {
   width: 500px;
   text-align: center;

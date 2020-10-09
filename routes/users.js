@@ -51,8 +51,8 @@ userRouter.post(
       token,
     });
   })
-  );
-  
+);
+
 const passwordVali = function (password, user) {
   const result = user.validatePassword(password);
   // console.log(result);
@@ -91,11 +91,10 @@ userRouter.post(
     }
     const token = getUserToken(user);
     res.json({ token, user: { id: user.id } });
-
   })
 );
 
-userRouter.get("/:id", requireAuth, async (req, res, next) => {
+userRouter.get("/:id", async (req, res, next) => {
   const user = await User.findOne({
     where: {
       id: req.params.id,
