@@ -51,8 +51,8 @@ userRouter.post(
       token,
     });
   })
-  );
-  
+);
+
 const passwordVali = function (password, user) {
   const result = user.validatePassword(password);
   // console.log(result);
@@ -91,10 +91,10 @@ userRouter.post(
     }
     const token = getUserToken(user);
     res.json({ token, user: { id: user.id } });
-
   })
 );
 
+// Please keep auth middleware on this!
 userRouter.get("/:id", requireAuth, async (req, res, next) => {
   const user = await User.findOne({
     where: {

@@ -1,18 +1,21 @@
-const content = {
+var content = {
   init: () => {
-    content.articleBox1A();
-    content.articleBox1B();
-    content.articleBox2();
+    content.mainArticle();
+    content.mainSideArticles();
+    content.trendingArticles();
     content.articleBox3();
   },
 
-  articleBox1A: async () => {
+  mainArticle: async () => {
     try {
       const count = await content.articleCount();
       const id = await content.randomNum(count);
+
       const res = await fetch(`http://localhost:8080/articles/${id}`);
+
       const randomArticle = await res.json();
       const main = randomArticle.article;
+
       const author = await content.getUser(main.userId);
 
       document.querySelector(".artA__main--title").innerHTML = main.title;
@@ -29,7 +32,7 @@ const content = {
     }
   },
 
-  articleBox1B: async () => {
+  mainSideArticles: async () => {
     const slots = document.querySelectorAll(".artA__side--Article");
     slots.forEach(async (slot) => {
       try {
@@ -67,24 +70,41 @@ const content = {
     });
   },
 
-  articleBox2: async () => {
-    const box = document.querySelector(".content__article--B");
-    try {
-      const res = await fetch("http://localhost:8080/articles");
-      const data = await res.json();
-      const articles = data.articles;
-      const id = data.id;
+  trendingArticles: async () => {
+    const slots = document.querySelectorAll(".content__articleB");
+    slots.forEach(async (slot) => {
+      try {
+        const count = await content.articleCount();
+        const id = await content.randomNum(count);
+        const res = await fetch(`http://localhost:8080/articles/${id}`);
+        const randomArticle = await res.json();
+        const main = randomArticle.article;
+        const author = await content.getUser(main.userId);
 
-      const artUL = document.createElement("ul");
-      box.appendChild(artUL);
-      articles.forEach((article) => {
-        const art = document.createElement("li");
-        art.innerText = `${article.title} by ${article.User.userName}`;
-        artUL.appendChild(art);
-      });
-    } catch (err) {
-      console.error(err);
-    }
+        const divA = document.createElement("div");
+        const divM = document.createElement("div");
+
+        const name = document.createElement("h5");
+        name.textContent = author.userName;
+        const title = document.createElement("h3");
+        title.textContent = main.title;
+        const image = document.createElement("img");
+        image.setAttribute(
+          "src",
+          `https://picsum.photos/id/${content.randomNum(100)}/80/80`
+        );
+
+        name.appendChild(content.followButton());
+        slot.appendChild(divA);
+        slot.appendChild(divM);
+        divA.appendChild(name);
+        divA.appendChild(title);
+        divA.innerHTML += `<a href="http://localhost:8080/articles/${id}">Read More</a>`;
+        divM.appendChild(image);
+      } catch (err) {
+        console.error(err);
+      }
+    });
   },
 
   articleBox3: async () => {
@@ -163,4 +183,4 @@ const content = {
   },
 };
 
-window.addEventListener("DOMContentLoaded", async () => content.init());
+document.addEventListener("DOMContentLoaded", async () => content.init());
