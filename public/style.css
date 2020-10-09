@@ -4,6 +4,28 @@ body {
   font-family: "Noto Sans JP", "Courier New", Courier, monospace;
 }
 
+a {
+  margin: 12px;
+  color: rgb(87, 87, 87);
+}
+
+h4,
+h5 {
+  margin: 12px;
+  margin-bottom: -10px;
+}
+
+h2,
+h3 {
+  font-family: sans-serif;
+  margin: 12px;
+}
+
+img {
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
 .coming-soon {
   width: 500px;
   text-align: center;
