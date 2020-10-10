@@ -1,7 +1,12 @@
-const app = {
+var app = {
   init: () => {
+    app.working();
     app.checkAuth();
     app.logOut();
+  },
+
+  working: () => {
+    console.log("HELLO INDEX");
   },
 
   checkAuth: async () => {
@@ -59,4 +64,4 @@ const app = {
   },
 };
 
-window.addEventListener("DOMContentLoaded", async () => app.init());
+document.addEventListener("DOMContentLoaded", async () => app.init());
