@@ -26,7 +26,7 @@ const articleValidations = [
   check("title")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a title.")
-    .isLength({ max: 10 })
+    .isLength({ max: 50 })
     .withMessage("Title must not exceed 50 characters."),
   check("body")
     .exists({ checkFalsy: true })

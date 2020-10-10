@@ -26,8 +26,8 @@ createArticle.addEventListener("submit", async (e) => {
   } catch (err) {
     const res = await err.json();
     console.log(res.errors);
-    const articleErrors = document.getElementById("articleError");
-    articleErrors.textContent = res.errors;
+    const articleErrors = document.getElementById("storyText");
+    articleErrors.innerHTML = res.errors;
   }
 });
 }
