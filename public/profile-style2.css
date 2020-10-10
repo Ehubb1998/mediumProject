@@ -11,6 +11,8 @@
     justify-content: space-between;
     height: 400px;
     width: 600px;
+    position: absolute;
+    left: 400px;
 }
 .banner {
     background-color: #c1e6da;
@@ -23,8 +25,8 @@
 .bannerContent {
     display: grid;
     grid-template-areas:
-        'x y';
-    grid-template-columns: 38rem 12rem;
+        'x y z';
+    grid-template-columns: 38rem 35rem 38rem;
 }
 .bio {
     color: grey;
@@ -66,7 +68,7 @@
     font-weight: normal;
 }
 .pictureContainer {
-    grid-area: y;
+    grid-area: z;
     /* border: 1px solid orange; */
     /* display: flex;
     justify-content: center;
@@ -98,15 +100,14 @@
 }
 .subBanner {
     grid-area: b;
-    display: flex;
-    justify-content: center;
+    position: relative;
 }
 .title {
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
     font-size: 2rem;
-    color: #413f3f;
+    color: #c1e6da;
     margin: 0;
-    padding: 2rem 0 0 0;
+    padding: 2rem 0 0.75rem 0;
 }
 .userName {
     font-size: 3rem;
