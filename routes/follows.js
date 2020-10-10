@@ -45,7 +45,7 @@ followRouter.get("/:id(\\d+)/followers", asyncHandler(async (req, res) => {
             as: 'followers'
         }
     });
-    const followers = author.followers.map((follower) => ({username: follower.username, email: follower.email}));
+    const followers = author.followers.map((follower) => ({username: follower.userName, email: follower.email}));
     res.json({ followers });
 }));
 
