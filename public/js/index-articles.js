@@ -1,9 +1,10 @@
 var content = {
-  init: () => {
-    content.mainArticle();
-    content.mainSideArticles();
-    content.trendingArticles();
-    content.articleBox3();
+  init: async() => {
+    await content.mainArticle();
+    await content.mainSideArticles();
+    await content.trendingArticles();
+    await content.articleBox3();
+    content.following();
   },
 
   mainArticle: async () => {
@@ -22,7 +23,7 @@ var content = {
       document.querySelector(".artA__main--author").innerHTML = author.userName;
       document
         .querySelector(".artA__main--author")
-        .appendChild(content.followButton());
+        .appendChild(content.followButton(main.userId));
 
       document
         .querySelector(".artA__main--link")
@@ -57,7 +58,7 @@ var content = {
         );
         image.setAttribute("alt", "sorry blind people.");
 
-        name.appendChild(content.followButton());
+        name.appendChild(content.followButton(main.userId));
         slot.appendChild(divA);
         slot.appendChild(divM);
         divA.appendChild(name);
@@ -94,7 +95,7 @@ var content = {
           `https://picsum.photos/id/${content.randomNum(100)}/80/80`
         );
 
-        name.appendChild(content.followButton());
+        name.appendChild(content.followButton(main.userId));
         slot.appendChild(divA);
         slot.appendChild(divM);
         divA.appendChild(name);
@@ -131,7 +132,7 @@ var content = {
           `https://picsum.photos/id/${content.randomNum(100)}/200/133`
         );
 
-        name.appendChild(content.followButton());
+        name.appendChild(content.followButton(main.userId));
         slot.appendChild(divA);
         slot.appendChild(divM);
         divA.appendChild(name);
@@ -175,12 +176,48 @@ var content = {
     }
   },
 
-  followButton: () => {
+  followButton: (id) => {
     const button = document.createElement("button");
+    button.setAttribute("id", id);
     button.classList.add("followButton");
     button.textContent = "Follow";
+    //console.log("HELLO!!!!!!");
+    //button.addEventListener("click", () => createFollow(id))
     return button;
   },
+
+  following: async() => {
+    const followButtons = document.querySelectorAll(".followbutton");
+    console.log(followButtons);
+    followButtons.forEach((button) => {
+      button.addEventListener("click", async (e) => {
+      const userId = localStorage.getItem("MEDIUM_USER_ID");
+      const authorId = e.target.id
+      console.log(authorId);
+
+      try {
+
+        const res = await fetch(`/users/${authorId}/addFollow`, {
+            method: "POST",
+            body: JSON.stringify({ userId, authorId }),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('MEDIUM_ACCESS_TOKEN')}`
+            }
+        });
+        if (!res.ok) {
+            throw res;
+        }
+        const data = await res.json();
+
+      } catch(e) {
+          console.log(e)
+      }
+})
+});
+
+  }
+
 };
 
 document.addEventListener("DOMContentLoaded", async () => content.init());

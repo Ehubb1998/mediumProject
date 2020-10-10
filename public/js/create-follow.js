@@ -1,8 +1,9 @@
-const followButton = document.querySelector(".follow-button");
-
-followButton.addEventListener("click", async (e) => {
+const followButtons = document.querySelectorAll(".followbutton");
+console.log(followButtons);
+followButtons.forEach((button) => {
+    button.addEventListener("click", async (e) => {
     const userId = localStorage.getItem("MEDIUM_USER_ID");
-    const authorId = window.location.href.split('/')[4]
+    const authorId = e.target.id
     console.log(authorId)
     try {
 
@@ -22,5 +23,5 @@ followButton.addEventListener("click", async (e) => {
     } catch(e) {
         console.log(e)
     }
-
+})
 });
