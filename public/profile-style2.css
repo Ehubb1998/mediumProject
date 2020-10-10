@@ -1,0 +1,115 @@
+
+
+.article {
+    color:grey;
+    font-size: 0.75rem;
+}
+.articlesContainer {
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    width: 600px;
+}
+.banner {
+    background-color: #c1e6da;
+    width: 100%;
+    height: 270px;
+    grid-area: a;
+    display: flex;
+    justify-content: flex-start;
+}
+.bannerContent {
+    display: grid;
+    grid-template-areas:
+        'x y';
+    grid-template-columns: 38rem 12rem;
+}
+.bio {
+    color: grey;
+    padding: 1rem 0;
+}
+.claps, .date {
+    font-family: "Noto Sans JP", "Courier New", Courier, monospace;
+    font-size: 0.75rem;
+    color: lightgrey;
+}
+.date {
+    overflow-x: hidden;
+    width: 6rem;
+    height: 1rem;
+}
+.followButton {
+    color: white;
+    border-radius: 2px;
+}
+.followButtonContainer {
+    padding: 0.5rem;
+}
+.followers {
+    font-family: "Noto Sans JP", "Courier New", Courier, monospace;
+    font-size: 0.8rem;
+    color: grey;
+    padding: 0.5rem 0 0 0;
+}
+.kanye {
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+}
+.link {
+    font-family: "Noto Sans JP", "Courier New", Courier, monospace;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #413f3f;
+    font-weight: normal;
+}
+.pictureContainer {
+    grid-area: y;
+    /* border: 1px solid orange; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    padding: 2rem 2rem 2rem 0;
+
+}
+.profileContainer {
+    grid-area: x;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+}
+.profile {
+    /* border: 1px solid white; */
+    padding: 0 2rem 0;
+
+}
+.outermost {
+    display: grid;
+    grid-template-areas:
+        'a a a'
+        'b b b';
+}
+.readMore {
+    color: grey;
+    text-decoration: none;
+}
+.subBanner {
+    grid-area: b;
+    display: flex;
+    justify-content: center;
+}
+.title {
+    font-family: "Noto Sans JP", "Courier New", Courier, monospace;
+    font-size: 2rem;
+    color: #413f3f;
+    margin: 0;
+    padding: 2rem 0 0 0;
+}
+.userName {
+    font-size: 3rem;
+    font-family: "Noto Sans JP", "Courier New", Courier, monospace;
+    color: white;
+}

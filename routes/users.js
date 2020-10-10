@@ -143,7 +143,7 @@ userRouter.get("/profile/:id", asyncHandler(async (req, res, next) => {
     include: 'Articles'
   });
   if (user) {
-    res.render("profile-page", { user } );
+    res.render("profile-page-2", { user } );
   } else {
     next();
   }

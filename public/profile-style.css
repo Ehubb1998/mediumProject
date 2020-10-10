@@ -20,14 +20,26 @@ h1, a {
     justify-content: space-between;
     padding: 1rem 2rem 0;
 }
+.banner {
+    background-color: #c1e6da;
+    width: 100%;;
+    height: 270px;
+    position: relative;
+    top: 30px;
+}
 .bio {
-    padding: 0 0 0 2rem;
+    padding: 0 0 1rem 2rem;
     color: grey;
 }
-.claps {
+.claps, .date, .followers {
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
     font-size: 0.75rem;
     color: grey;
+}
+.date {
+    overflow-x: hidden;
+    width: 6rem;
+    height: 1rem;
 }
 .kanye {
     border-radius: 50%;
@@ -38,7 +50,7 @@ h1, a {
     padding: 1rem 0;
     font-size: 1rem;
     font-weight: bold;
-    color: #2b2b2b;
+    color: white;
 }
 .outerContainer {
     display: grid;
@@ -73,11 +85,10 @@ h1, a {
     justify-content: flex-end;
     align-items: flex-start;
     height: 150px;
-
 }
 .userName {
     font-size: 3rem;
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
     padding: 0 2rem 0;
-    color: #2b2b2b;
+    color: white;
 }
