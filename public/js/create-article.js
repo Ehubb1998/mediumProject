@@ -1,5 +1,5 @@
 const createArticle = document.querySelector(".create-article-form");
-
+if (createArticle) {
 createArticle.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(createArticle);
@@ -24,13 +24,18 @@ createArticle.addEventListener("submit", async (e) => {
 
     window.location.href = "/";
   } catch (err) {
-    console.error(err);
+    const res = await err.json();
+    console.log(res.errors);
+    const articleErrors = document.getElementById("storyText");
+    articleErrors.innerHTML = res.errors;
   }
 });
-
+}
 // Attempting to Get Auto Expand Text Area
-document.getElementById("storyTitle").addEventListener(
-  "input",
+const something = document.getElementById("storyTitle")
+if (something) {
+something.addEventListener(
+    "input",
   function (event) {
     if (event.target.tagName.toLowerCase() !== "textarea") {
       console.log("hello");
@@ -42,7 +47,7 @@ document.getElementById("storyTitle").addEventListener(
   },
   false
 );
-
+}
 const autoExpand = (field) => {
   field.style.height = "inherit";
 

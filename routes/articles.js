@@ -1,6 +1,6 @@
 const express = require("express");
 const articleRouter = express.Router();
-const { asyncHandler } = require("../utils");
+const { asyncHandler, handleValidationErrors } = require("../utils");
 const db = require("../db/models");
 const { Article, User, Comment } = db;
 const { check, validationResult } = require("express-validator");
@@ -26,10 +26,12 @@ const articleValidations = [
   check("title")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a title.")
-    .isLength({ max: 100 }),
+    .isLength({ max: 50 })
+    .withMessage("Title must not exceed 50 characters."),
   check("body")
     .exists({ checkFalsy: true })
     .withMessage("Please provide article content."),
+  handleValidationErrors,
 ];
 
 const articleNotFoundError = (articleId) => {

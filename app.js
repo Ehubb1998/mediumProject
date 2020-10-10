@@ -34,7 +34,7 @@ app.use((err, req, res, next) => {
   // console.log(err);
   res.status(err.status || 500);
   const errMsg = err.errors;
-  // console.log(errMsg);
+  console.log(errMsg);
   if (err.user = false) {
     res.json({
       title: err.title,

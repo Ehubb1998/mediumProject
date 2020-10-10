@@ -11,7 +11,7 @@ const userRouter = require("./users");
 commentRouter.use(express.urlencoded());
 
 commentRouter.get("/:id(\\d+)/comments", (req, res) => {
-  console.log(req)
+  //console.log(req)
 
     res.render('create-comment');
 });
@@ -24,6 +24,7 @@ commentRouter.post("/:id(\\d+)/comments", requireAuth, asyncHandler( async(req, 
       articleId: req.params.id
     });
 
-    res.redirect()
+    res.redirect('/');
+
 }));
 module.exports = commentRouter;
