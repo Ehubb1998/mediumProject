@@ -3,27 +3,27 @@ extends layout.pug
 block content
   body
     include includes/navigation
-    .outerOuterLmao
-        .banner
-            .outerContainer
-                .profileContainer
-                    .userName= user.userName
-                    .bio= user.bio
-                        .followers #{user.Articles.length*123} Followers
-                        .latest Latest by #{user.userName}
-
-                .pictureContainer
-                    .picture
-                        img.kanye(src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0OTkwNDUxOTQ5MDUzNDQ3/kanye-west-attends-the-christian-dior-show-as-part-of-the-paris-fashion-week-womenswear-fall-winter-2015-2016-on-march-6-2015-in-paris-france-photo-by-dominique-charriau-wireimage-square.jpg", alt="hopefully a pic")
-                if user.Articles
-                    .articlesContainer
-                        each article in user.Articles
-                            .articleContainer
-                                a(href=`http://localhost:8080/articles/${article.id}`)
-                                    h1= article.title
-                                    .date #{article.createdAt}
-                                    .claps #{article.claps} Claps
-                                .overflowDiv
-                                    h5= article.body
-
-//-   script(src="/js/profile.js")
+    .outermost
+      .banner
+        .bannerContent
+          .profileContainer
+            .profile
+              .userName= user.userName
+              .bio= user.bio
+                .followers #{user.Articles.length*123} Followers •  Following #{user.Articles.length*321} • #{user.Articles.length} Posts
+          .pictureContainer
+            img.kanye(src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0OTkwNDUxOTQ5MDUzNDQ3/kanye-west-attends-the-christian-dior-show-as-part-of-the-paris-fashion-week-womenswear-fall-winter-2015-2016-on-march-6-2015-in-paris-france-photo-by-dominique-charriau-wireimage-square.jpg", alt="hopefully a pic")
+            .followButtonContainer
+              button.followButton(type="button") Follow #{user.userName}
+      .subBanner
+        if user.Articles
+          .articlesContainer
+              each article in user.Articles
+                  .articleContainer
+                      a.link(href=`http://localhost:8080/articles/${article.id}`)
+                          h1.title= article.title
+                          .date #{article.createdAt}
+                          .claps #{article.claps} Claps
+                      .overflowDiv
+                          h5.article= article.body
+                          a.readMore(href=`http://localhost:8080/articles/${article.id}`) Read More
