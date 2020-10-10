@@ -4,7 +4,7 @@ var content = {
     await content.mainSideArticles();
     await content.trendingArticles();
     await content.articleBox3();
-    content.following();
+    //await content.following();
   },
 
   mainArticle: async () => {
@@ -35,7 +35,7 @@ var content = {
 
   mainSideArticles: async () => {
     const slots = document.querySelectorAll(".artA__side--Article");
-    slots.forEach(async (slot) => {
+    await slots.forEach(async (slot) => {
       try {
         const count = await content.articleCount();
         const id = await content.randomNum(count);
@@ -57,8 +57,10 @@ var content = {
           `https://picsum.photos/id/${content.randomNum(100)}/100/100`
         );
         image.setAttribute("alt", "sorry blind people.");
-
-        name.appendChild(content.followButton(main.userId));
+        const button = content.followButton(main.userId);
+        // console.log(button);
+        // button.addEventListener("click", () => content.following(id))
+        name.appendChild(button);
         slot.appendChild(divA);
         slot.appendChild(divM);
         divA.appendChild(name);
@@ -143,6 +145,7 @@ var content = {
         console.error(err);
       }
     });
+    //content.following();
   },
 
   getUser: async (id) => {
@@ -182,17 +185,17 @@ var content = {
     button.classList.add("followButton");
     button.textContent = "Follow";
     //console.log("HELLO!!!!!!");
-    //button.addEventListener("click", () => createFollow(id))
+    button.addEventListener("click", () => content.following(id))
     return button;
   },
 
-  following: async() => {
-    const followButtons = document.querySelectorAll(".followbutton");
-    console.log(followButtons);
-    followButtons.forEach((button) => {
-      button.addEventListener("click", async (e) => {
+  following: async(authorId) => {
+    // const followButtons = document.querySelectorAll(".followbutton");
+    // console.log(followButtons);
+    // followButtons.forEach((button) => {
+    //   button.addEventListener("click", async (e) => {
       const userId = localStorage.getItem("MEDIUM_USER_ID");
-      const authorId = e.target.id
+    //   const authorId = e.target.id
       console.log(authorId);
 
       try {
@@ -213,8 +216,8 @@ var content = {
       } catch(e) {
           console.log(e)
       }
-})
-});
+// })
+// });
 
   }
 
