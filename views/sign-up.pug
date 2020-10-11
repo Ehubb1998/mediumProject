@@ -3,33 +3,21 @@ extends layout.pug
 block content
   body
     include includes/navigation
-    h1.new-user-page Sign-Up
+    include includes/scripts
     div.form-container
       form.create-user-form
-
-        div#userName
-          label(for="userName") User Name
-          input(name="userName" id="userField" class="form" type="text" placeHolder="Babe McGee" required)
-
-        div#bio
-          label(for="bio") Bio
-          textarea(name="bio" id="bioField" class="form" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
-
-        div#email
-          label(for="email") Email
-          input(name="email" id="emailField" class="form" type="email" placeHolder="babe@thepig.com" required)
-
-        div#password
-          label(for="password") Password
-          input(name="password" id="passwordField" class="form" type="password" placeHolder="password" required)
-
-        div#confirmedPassword
-          label(for="confirmedPassword") Confirmed
-          input(name="confirmedPassword" id="cpField" class="form" type="password" placeHolder="password" required)
-        div#button
+        h1.new-user-page Sign Up with Medium Today
+        label(for="userName") User Name
+        input(name="userName" id="userField" class="form" type="text" placeHolder="Babe McGee" required)
+        label(for="email") Email
+        input(name="email" id="emailField" class="form" type="email" placeHolder="babe@thepig.com" required)
+        label(for="password") Password
+        input(name="password" id="passwordField" class="form" type="password" placeHolder="password" required)
+        label(for="confirmedPassword") Confirm Password
+        input(name="confirmedPassword" id="cpField" class="form" type="password" placeHolder="password" required)
+        label(for="bio") Tell us a little about yourself...
+        textarea(name="bio" id="bioField" class="form" placeHolder="I grew up in Kalamazoo and specialize in piloting hot air balloon rides.")
+        div.signUpButtons
           button(type="submit" class=".user-submit") Submit
-          button(type="submit" id="demo-login") Demo
-    script(src="/js/create-user.js")
-    script(src="/js/index.js")
-          button(type="sumbit" class=".user-submit") Submit
-          button(type="button" id="demo-login") Demo
+          button(type="submit" id="demo-login") Demo Login
+      img(src="https://github.com/Ehubb1998/mediumProject/blob/master/assets/People-with-Activity.jpg")
