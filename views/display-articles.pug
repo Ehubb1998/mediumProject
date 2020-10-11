@@ -3,7 +3,7 @@ extends layout.pug
 block content
   each article in articles
     div
-      a(href=`http://localhost:8080/articles/${article.id}`)
+      a(href=`/articles/${article.id}`)
         h1= article.title
         h3= article.User.userName
         div Claps: #{article.claps}
