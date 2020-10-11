@@ -61,6 +61,25 @@ articleRouter.get(
   })
 );
 
+// Renders Invidual Article View
+articleRouter.get(
+  "/view/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const id = parseInt(req.params.id, 10);
+    const article = await Article.findByPk(id, {
+      include: { model: Comment, as: "comments", include: "User" },
+    });
+    if (article === null) {
+      next(articleNotFoundError(article));
+    } else {
+      res.render("article-view", {
+        article,
+        comments: article.comments,
+      });
+    }
+  })
+);
+
 articleRouter.post(
   "/",
   requireAuth,
@@ -80,24 +99,6 @@ articleRouter.post(
 articleRouter.get("/new", (req, res) => {
   res.render("create-article");
 });
-
-// articleRouter.get(
-//   "/:id",
-//   asyncHandler(async (req, res) => {
-//     const article = await Article.findByPk(req.params.id);
-//     const comments = await Comment.findAll({
-//       where: {
-//         articleId: req.params.id,
-//       },
-//     });
-
-//     res.render("create-article", {
-//       title: article.title,
-//       body: article.body,
-//       comments: comments,
-//     });
-//   })
-// );
 
 articleRouter.put(
   "/:id(\\d+)",

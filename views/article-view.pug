@@ -4,10 +4,11 @@ block content
   include includes/navigation
   include includes/scripts
   body
+    if article
     div.articleContainer
-      div.articleTitle How I tricked everyone into giving me Snacks
+      div.articleTitle= article.title
       div.articleAuthor
         img.authorImg(src="https://i.pinimg.com/736x/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg")
-        div.authorName Berber the Cat
+        div.authorName= article.userId
           button.followButton Follow
-      div.articleBody Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!Just meow and look cute guys!
+      div.articleBody= article.body
