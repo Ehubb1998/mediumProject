@@ -1,12 +1,7 @@
 var app = {
   init: () => {
-    app.working();
     app.checkAuth();
     app.logOut();
-  },
-
-  working: () => {
-    console.log("HELLO INDEX");
   },
 
   checkAuth: async () => {
