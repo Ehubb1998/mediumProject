@@ -9,13 +9,20 @@ createComment.addEventListener("submit", async (e) => {
 
     const paramsId = window.location.href.split('/')[4]
 
-    const res = await fetch(`/articles/${paramsId}/comments`, {
-        method: "POST",
-        body: JSON.stringify({ message, userId }),
-        headers: {
-          "Content-Type": "application/json",
+    try {
+      const res = await fetch(`/articles/${paramsId}/comments`, {
+          method: "POST",
+          body: JSON.stringify({ message, userId }),
+          headers: {
+            "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem('MEDIUM_ACCESS_TOKEN')}`
-        }
-    });
-
+          },
+      });
+      if (!res.ok) {
+        throw res;
+      }
+      window.location.href = `/articles/${paramsId}`;
+    } catch (err) {
+        console.error(err);
+  }
 });

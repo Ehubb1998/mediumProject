@@ -1,14 +1,14 @@
-const logInForm = document.querySelector(".log-in-form");
+var logInForm = document.querySelector(".log-in-form");
 logInForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(logInForm);
   const userName = formData.get("userName");
   const password = formData.get("password");
   const body = { userName, password };
-  console.log(body);
+  //console.log(body);
 
   try {
-    const res = await fetch("http://localhost:8080/users/token", {
+    const res = await fetch("/users/token", {
       method: "POST",
       body: JSON.stringify(body),
       headers: {

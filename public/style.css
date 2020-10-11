@@ -4,6 +4,33 @@ body {
   font-family: "Noto Sans JP", "Courier New", Courier, monospace;
 }
 
+a {
+  margin: 12px;
+  color: rgb(87, 87, 87);
+}
+
+h4,
+h5 {
+  margin: 12px;
+  margin-bottom: -10px;
+}
+
+h2,
+h3 {
+  font-family: sans-serif;
+  margin: 12px;
+}
+
+img {
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+.pageBreak {
+  width: 100%;
+  border-top: 1px solid rgb(206, 206, 206);
+}
+
 .coming-soon {
   width: 500px;
   text-align: center;
@@ -25,38 +52,4 @@ input {
   border: none;
   border-bottom: 1px solid rgb(206, 206, 206);
   outline: none;
-}
-
-#userName {
-  margin: 2em;
-}
-
-#bio {
-  margin: 2em;
-}
-
-#email {
-  margin: 2em;
-}
-
-#password {
-  margin: 2em;
-}
-
-#confirmedPassword {
-  margin: 2em;
-}
-
-#button {
-  margin-left: 2em;
-}
-
-#button:hover {
-  cursor: pointer;
-  transform: translateY(-0.15em);
-  box-shadow: 0.1em 0.1em 0.1em gray;
-}
-
-.form-container {
-  background-color: darkgray;
 }

@@ -6,6 +6,8 @@ const emailField = document.getElementById("emailField");
 const passwordField = document.getElementById("passwordField");
 const cpField = document.getElementById("cpField");
 
+
+
 demoButton.addEventListener("click", (e) => {
   userField.value = "Tom2020";
   bioField.innerHTML =
@@ -23,28 +25,34 @@ signUpForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const bio = formData.get("bio");
   const body = { email, password, userName, bio };
-  console.log(body);
-  try {
-    const res = await fetch("http://localhost:8080/users", {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!res.ok) {
-      throw res;
+
+  if (passwordField.value !== cpField.value) {
+    alert("password fields must match");
+
+  } else {
+
+    try {
+      const res = await fetch("/users", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!res.ok) {
+        throw res;
+      }
+      const {
+        token,
+        user: { id },
+      } = await res.json();
+
+      localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
+      localStorage.setItem("MEDIUM_USER_ID", id);
+
+      window.location.href = "/";
+    } catch (err) {
+      console.error(err);
     }
-    const {
-      token,
-      user: { id },
-    } = await res.json();
-
-    localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
-    localStorage.setItem("MEDIUM_USER_ID", id);
-
-    window.location.href = "/";
-  } catch (err) {
-    console.error(err);
   }
 });

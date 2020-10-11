@@ -51,7 +51,8 @@ userRouter.post(
       token,
     });
   })
-  );
+);
+
 
 const passwordVali = function (password, user) {
   const result = user.validatePassword(password);
@@ -91,20 +92,11 @@ userRouter.post(
     }
     const token = getUserToken(user);
     res.json({ token, user: { id: user.id } });
-
   })
 );
 
-// userRouter.get("/:id(\\d+)/profile", asyncHandler(async (req, res, next) => {
-//   const userId = parseInt(req.params.id, 10);
-//   const user = await User.findByPk(userId, {
-//     include: Article
-//   });
-//   console.log(user)
-//   res.render("profile-page", { user });
-// }));
 
-userRouter.get("/:id", async (req, res, next) => {
+userRouter.get("/:id", requireAuth, async (req, res, next) => {
   const user = await User.findOne({
     where: {
       id: req.params.id,
