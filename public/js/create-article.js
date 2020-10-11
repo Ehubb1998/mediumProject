@@ -10,7 +10,7 @@ createArticle.addEventListener("submit", async (e) => {
   const data = { title, body, claps, userId };
 
   try {
-    const res = await fetch("http://localhost:8080/articles", {
+    const res = await fetch("/articles", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

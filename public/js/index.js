@@ -12,7 +12,7 @@ var app = {
   checkAuth: async () => {
     try {
       const res = await fetch(
-        `http://localhost:8080/users/${localStorage.getItem("MEDIUM_USER_ID")}`,
+        `/users/${localStorage.getItem("MEDIUM_USER_ID")}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem(

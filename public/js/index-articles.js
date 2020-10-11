@@ -13,7 +13,7 @@ var content = {
       const count = await content.articleCount();
       const id = await content.randomNum(count);
 
-      const res = await fetch(`http://localhost:8080/articles/${id}`);
+      const res = await fetch(`/articles/${id}`);
 
       const randomArticle = await res.json();
       const main = randomArticle.article;
@@ -24,7 +24,7 @@ var content = {
       document.querySelector('.artA__main--author').innerHTML = author.userName;
       document.querySelector('.artA__main--author').appendChild(content.followButton(main.userId));
 
-      document.querySelector('.artA__main--link').setAttribute('href', `http://localhost:8080/articles/${id}`);
+      document.querySelector('.artA__main--link').setAttribute('href', `/articles/${id}`);
     } catch (err) {
       console.error(err);
     }
@@ -36,7 +36,7 @@ var content = {
       try {
         const count = await content.articleCount();
         const id = await content.randomNum(count);
-        const res = await fetch(`http://localhost:8080/articles/${id}`);
+        const res = await fetch(`/articles/${id}`);
         const randomArticle = await res.json();
         const main = randomArticle.article;
         const author = await content.getUser(main.userId);
@@ -59,7 +59,7 @@ var content = {
         slot.appendChild(divM);
         divA.appendChild(name);
         divA.appendChild(title);
-        divA.innerHTML += `<a href="http://localhost:8080/articles/${id}">Read More</a>`;
+        divA.innerHTML += `<a href="/articles/${id}">Read More</a>`;
         divM.appendChild(image);
       } catch (err) {
         console.error(err);
@@ -73,7 +73,7 @@ var content = {
       try {
         const count = await content.articleCount();
         const id = await content.randomNum(count);
-        const res = await fetch(`http://localhost:8080/articles/${id}`);
+        const res = await fetch(`/articles/${id}`);
         const randomArticle = await res.json();
         const main = randomArticle.article;
         const author = await content.getUser(main.userId);
@@ -93,7 +93,7 @@ var content = {
         slot.appendChild(divM);
         divA.appendChild(name);
         divA.appendChild(title);
-        divA.innerHTML += `<a href="http://localhost:8080/articles/${id}">Read More</a>`;
+        divA.innerHTML += `<a href="/articles/${id}">Read More</a>`;
         divM.appendChild(image);
       } catch (err) {
         console.error(err);
@@ -107,7 +107,7 @@ var content = {
       try {
         const count = await content.articleCount();
         const id = await content.randomNum(count);
-        const res = await fetch(`http://localhost:8080/articles/${id}`);
+        const res = await fetch(`/articles/${id}`);
         const randomArticle = await res.json();
         const main = randomArticle.article;
         const author = await content.getUser(main.userId);
@@ -127,7 +127,7 @@ var content = {
         slot.appendChild(divM);
         divA.appendChild(name);
         divA.appendChild(title);
-        divA.innerHTML += `<a href="http://localhost:8080/articles/${id}">Read More</a>`;
+        divA.innerHTML += `<a href="/articles/${id}">Read More</a>`;
         divM.appendChild(image);
       } catch (err) {
         console.error(err);
@@ -169,7 +169,7 @@ var content = {
 
   getUser: async (id) => {
     try {
-      const res = await fetch(`http://localhost:8080/users/publicinfo/${id}`);
+      const res = await fetch(`/users/publicinfo/${id}`);
       const data = await res.json();
       const user = data.user;
       return user;
@@ -180,7 +180,7 @@ var content = {
 
   articleCount: async () => {
     try {
-      const res = await fetch('http://localhost:8080/articles');
+      const res = await fetch('/articles');
       const data = await res.json();
       const count = data.articles.length;
       return count;
