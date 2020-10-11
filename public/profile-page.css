@@ -3,6 +3,7 @@
 .pParticle {
     color:grey;
     font-size: 0.75rem;
+    margin: 1rem 0;
 }
 .pParticlesContainer {
     overflow: scroll;
@@ -38,14 +39,14 @@
     color: lightgrey;
 }
 .pPdate {
-    overflow-x: hidden;
+    overflow: hidden;
     width: 6rem;
     height: 1rem;
 }
 
-.pPfollowButtonContainer {
+/* .pPfollowButtonContainer {
     padding: 0.5rem;
-}
+} */
 .pPfollowers {
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
     font-size: 0.8rem;
@@ -94,6 +95,7 @@
 .pPreadMore {
     color: grey;
     text-decoration: none;
+    margin: 1rem 0;
 }
 .pPsubBanner {
     grid-area: b;
