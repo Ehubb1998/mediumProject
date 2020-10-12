@@ -47,6 +47,16 @@ img {
   margin: 5px;
 }
 
+.followButtonClicked {
+  background-color: rgb(89, 164, 177);
+  outline: none;
+  border: none;
+  border: 1px solid rgb(89, 164, 177);
+  border-radius: 4px;
+  color: white;
+  margin: 5px;
+}
+
 input {
   background: transparent;
   border: none;
