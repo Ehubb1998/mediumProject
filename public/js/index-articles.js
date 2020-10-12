@@ -17,27 +17,34 @@ var content = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("MEDIUM_ACCESS_TOKEN")}`
-        }
+          Authorization: `Bearer ${localStorage.getItem(
+            "MEDIUM_ACCESS_TOKEN"
+          )}`,
+        },
       });
       if (!res.ok) {
         throw res;
       }
       const userList = await res.json();
       const usersArr = userList.usersArr;
-     
+      let count = 0;
+
       usersArr.forEach((userobj) => {
-        console.log(userobj);
+        if (count === 5) {
+          return;
+        }
         const userLink = document.createElement("a");
         const liEle = document.createElement("ul");
         let name = userobj.userName;
         let id = userobj.userId;
-        userLink.setAttribute("href", `/users/profile/${id}`)
-        liEle.innerHTML = `<img src="https://picsum.photos/id/${content.randomNum(100)}/25/25">${name}<button class="followButton">Follow</button>`;
+        userLink.setAttribute("href", `/users/profile/${id}`);
+        liEle.innerHTML = `<img src="https://picsum.photos/id/${content.randomNum(
+          100
+        )}/64/64">${name}<button class="followButton">Follow</button>`;
         userLink.appendChild(liEle);
         suggestBox.appendChild(userLink);
-      })
-      
+        count++;
+      });
     } catch (err) {
       console.log(err);
     }
@@ -92,7 +99,7 @@ var content = {
           "src",
           `https://picsum.photos/id/${content.randomNum(100)}/100/100`
         );
-        image.setAttribute("alt", "sorry blind people.");
+        image.setAttribute("alt", "Sorry Helen Keller.");
         const button = content.followButton(main.userId);
         name.appendChild(button);
         slot.appendChild(divA);
