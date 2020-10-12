@@ -18,25 +18,27 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
-      bio: DataTypes.TEXT,
+      bio: {
+        type: DataTypes.STRING(200),
+      },
     },
     {}
   );
   User.associate = function (models) {
     User.hasMany(models.Article, { foreignKey: "userId" }),
-    User.hasMany(models.Comment, { foreignKey: "userId"}),
-    User.belongsToMany(models.User, {
-      as: 'followers',
-      through: 'Following',
-      otherKey: 'followerId',
-      foreignKey: 'authorId'
-    }),
-    User.belongsToMany(models.User, {
-      as: 'followedAuthors',
-      through: 'Following',
-      otherKey: 'authorId',
-      foreignKey: 'followerId'
-    })
+      User.hasMany(models.Comment, { foreignKey: "userId" }),
+      User.belongsToMany(models.User, {
+        as: "followers",
+        through: "Following",
+        otherKey: "followerId",
+        foreignKey: "authorId",
+      }),
+      User.belongsToMany(models.User, {
+        as: "followedAuthors",
+        through: "Following",
+        otherKey: "authorId",
+        foreignKey: "followerId",
+      });
   };
 
   User.prototype.validatePassword = function (password) {
@@ -45,5 +47,4 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   return User;
-
 };
