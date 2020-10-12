@@ -20,6 +20,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "I exist as I am and that's enough...",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -27,6 +28,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "Nashville native in Los Angeles, writing prose but not for the the pros",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -34,6 +36,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "musician / saxophone / fur babies",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -41,6 +44,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "I pledge allegiance to the flag of the United States of America",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -48,6 +52,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "Say hello to my little friend.",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -55,6 +60,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "Luke I am your father",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -62,6 +68,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "I had a dream today oh my about a lucky man who made the grade.",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -69,6 +76,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "There's a lady who says all that glitters is gold.",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -76,6 +84,7 @@ module.exports = {
         {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
+          bio: "If you don't eat your meat you can't have any pudding.",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           createdAt: new Date(),
           updatedAt: new Date(),
