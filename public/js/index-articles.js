@@ -1,10 +1,46 @@
+// const db = require("../../db/models");
+// const { User } = db;
 var content = {
   init: async () => {
     await content.mainArticle();
     await content.mainSideArticles();
     await content.trendingArticles();
     await content.articleBox3();
+    await content.suggestedUsers();
     content.following();
+  },
+
+  suggestedUsers: async () => {
+    const suggestBox = document.querySelector(".content__users--B");
+    try {
+      const res = await fetch("/users/userList", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("MEDIUM_ACCESS_TOKEN")}`
+        }
+      });
+      if (!res.ok) {
+        throw res;
+      }
+      const userList = await res.json();
+      const usersArr = userList.usersArr;
+     
+      usersArr.forEach((userobj) => {
+        console.log(userobj);
+        const userLink = document.createElement("a");
+        const liEle = document.createElement("ul");
+        let name = userobj.userName;
+        let id = userobj.userId;
+        userLink.setAttribute("href", `/users/profile/${id}`)
+        liEle.innerHTML = `<img src="https://picsum.photos/id/${content.randomNum(100)}/25/25">${name}<button class="followButton">Follow</button>`;
+        userLink.appendChild(liEle);
+        suggestBox.appendChild(userLink);
+      })
+      
+    } catch (err) {
+      console.log(err);
+    }
   },
 
   mainArticle: async () => {
