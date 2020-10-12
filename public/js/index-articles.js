@@ -35,7 +35,7 @@ var content = {
         let name = userobj.userName;
         let id = userobj.userId;
         userLink.setAttribute("href", `/users/profile/${id}`)
-        liEle.innerHTML = `<img src="https://picsum.photos/id/${content.randomNum(100)}/25/25">${name}<button class="followButton">Follow</button>`;
+        liEle.innerHTML = `<img id="circles" src="https://picsum.photos/id/${content.randomNum(100)}/25/25">${name}<button class="followButton">Follow</button>`;
         userLink.appendChild(liEle);
         suggestBox.appendChild(userLink);
       })
