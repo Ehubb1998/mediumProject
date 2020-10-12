@@ -2,6 +2,7 @@ var app = {
   init: () => {
     app.checkAuth();
     app.logOut();
+    app.viewProfile();
   },
 
   checkAuth: async () => {
@@ -58,6 +59,16 @@ var app = {
       localStorage.clear();
     });
   },
+  viewProfile: () => {
+    const profileLink = document.getElementById("profileReroute");
+    profileLink.addEventListener("click", () => {
+      const userId = localStorage.getItem("MEDIUM_USER_ID");
+      profileLink.setAttribute(
+        "href",
+        `http://localhost:8080/users/profile/${userId}`
+      );
+    })
+  }
 };
 
 document.addEventListener("DOMContentLoaded", async () => app.init());
