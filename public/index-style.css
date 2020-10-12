@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin: 80px;
-  margin-right: 120px;
+  margin-right: 100px;
 }
 
 .svg__logo {
@@ -216,18 +216,38 @@
 }
 
 .dropdown__content {
-  display: none;
-  flex-direction: column;
+  opacity: 0;
   position: absolute;
-  text-align: left;
+  right: 0;
+  z-index: 1;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  margin-top: 35px;
+  transform: translateY(-2em);
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s,
+    z-index 0s linear 0.01s;
+}
+
+.dropdown__content a {
+  text-decoration: none;
+}
+
+.dropdown__content div {
+  padding: 10px;
+  transition: 0.5s ease;
+}
+
+.dropdown__content div:hover {
+  box-shadow: 0 0 0 3px white;
+  transition: 1.2s ease;
 }
 
 .dropdown:hover .dropdown__content {
-  display: block;
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0s, 0s, 0.3s;
+  padding: 10px;
 }
 
 .hidden {
