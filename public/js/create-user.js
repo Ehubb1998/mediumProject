@@ -28,7 +28,7 @@ signUpForm.addEventListener("submit", async (e) => {
   const body = { email, password, userName, bio, confirmedPassword };
   // console.log(confirmedPassword);
   try {
-    const res = await fetch("http://localhost:8080/users", {
+    const res = await fetch("/users", {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
@@ -42,7 +42,7 @@ signUpForm.addEventListener("submit", async (e) => {
       token,
       user: { id },
     } = await res.json();
-    
+
     localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
     localStorage.setItem("MEDIUM_USER_ID", id);
 
