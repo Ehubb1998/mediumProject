@@ -16,6 +16,7 @@ h4,
 h5 {
   margin: 12px;
   margin-bottom: -10px;
+  cursor: pointer;
 }
 
 .suggestedUserClass {
@@ -56,6 +57,10 @@ img {
   border-radius: 4px;
   color: rgb(89, 164, 177);
   margin: 5px;
+}
+
+.followButton:active {
+  transform: translateY(2px);
 }
 
 .followButtonClicked {
