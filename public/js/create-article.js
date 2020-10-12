@@ -7,10 +7,22 @@ createArticle.addEventListener("submit", async (e) => {
   const body = formData.get("body");
   const claps = 0;
   const userId = localStorage.getItem("MEDIUM_USER_ID");
-  const peopleList = await fetch("/users");
-  const actualPeople = await peopleList.json();
-  console.log(actualPeople[0]);
-  const data = { title, body, claps, userId };
+
+
+  const res = await fetch(
+    `/users/${localStorage.getItem("MEDIUM_USER_ID")}`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(
+          "MEDIUM_ACCESS_TOKEN"
+        )}`,
+      },
+    }
+  );
+
+  const stuff = await res.json();
+  const author = stuff.user.userName;
+  const data = { title, body, claps, userId, author };
 
   try {
     const res = await fetch("/articles", {

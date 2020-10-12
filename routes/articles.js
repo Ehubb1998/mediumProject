@@ -69,6 +69,7 @@ articleRouter.get(
     const article = await Article.findByPk(id, {
       include: { model: Comment, as: "comments", include: "User" },
     });
+    console.log(article);
     if (article === null) {
       next(articleNotFoundError(article));
     } else {

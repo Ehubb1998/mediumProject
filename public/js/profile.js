@@ -6,7 +6,7 @@ const getFollowers = async () => {
     const subjects = await res2.json()
     const peopleList = await fetch("/users");
     const actualPeople = await peopleList.json();
-    console.log(actualPeople[0]);
+    console.log(actualPeople.users[4].userName);
     const numOfFollowers = followers.followers.length;
     const numOfPeopleFollowing = subjects.followedAuthors.length;
     console.log("THIS IS HERE!!!");
