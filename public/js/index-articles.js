@@ -5,7 +5,8 @@ var content = {
     await content.trendingArticles();
     await content.articleBox3();
     content.following();
-    console.log(document.querySelectorAll(".followButton"));
+    content.linking();
+    //console.log(document.querySelectorAll(".followButton"));
   },
 
   mainArticle: async () => {
@@ -22,6 +23,11 @@ var content = {
 
       document.querySelector(".artA__main--title").innerHTML = main.title;
       document.querySelector(".artA__main--author").innerHTML = author.userName;
+
+      document
+        .querySelector(".artA__main--author")
+        .setAttribute("id", main.userId);
+
       document
         .querySelector(".artA__main--author")
         .appendChild(content.followButton(main.userId));
@@ -50,6 +56,7 @@ var content = {
 
         const name = document.createElement("h5");
         name.textContent = author.userName;
+        name.setAttribute("id", main.userId);
         const title = document.createElement("h3");
         title.textContent = main.title;
         const image = document.createElement("img");
@@ -174,7 +181,7 @@ var content = {
     //     console.error(err);
     //   }
     // });
-    console.log(document.querySelectorAll(".followButton"));
+    //console.log(document.querySelectorAll(".followButton"));
     //content.following();
   },
 
@@ -220,6 +227,17 @@ var content = {
     return button;
   },
 
+  linking: async () => {
+    const followLinks = document.querySelectorAll("h4, h5");
+    console.log(followLinks);
+    followLinks.forEach((link) => {
+      link.addEventListener("click", async (e) => {
+        console.log(e.target.id);
+        window.location.href = `/users/profile/${e.target.id}`;
+      })
+    })
+  },
+
   following: async () => {
     const followButtons = document.querySelectorAll(".followbutton");
     // console.log(followButtons);
@@ -227,7 +245,7 @@ var content = {
       button.addEventListener("click", async (e) => {
         const userId = localStorage.getItem("MEDIUM_USER_ID");
         const authorId = e.target.id;
-        console.log(authorId);
+        //console.log(authorId);
 
         try {
           const res = await fetch(`/users/${authorId}/addFollow`, {
