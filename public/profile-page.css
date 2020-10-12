@@ -32,6 +32,8 @@
 .pPbio {
     color: grey;
     padding: 1rem 0;
+    overflow-y: hidden;
+    height: 80px;
 }
 .pPclaps, .pPdate {
     font-family: "Noto Sans JP", "Courier New", Courier, monospace;
