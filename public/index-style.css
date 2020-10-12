@@ -198,12 +198,10 @@
 
 .content__categories--D {
   grid-area: cat;
-  border-width: 3px rgb(179, 179, 179);
-  border-style: double;
   font-family: monospace;
+  background-image: url("https://gyazo.com/8be3b1add6f1deb6736b4ca661c9210b");
   font-size: 20px;
   color: rgba(3, 168, 124, 1);
-  padding-top: 300px;
   text-align: center;
   width: auto;
 }
@@ -355,4 +353,3 @@
   color: black;
   border: 1px solid black;
 }
-
