@@ -73,6 +73,16 @@ const passwordVali = function (password, user) {
   return result;
 };
 
+userRouter.get("/", async (req, res, next) => {
+  const users = await User.findAll();
+  console.log(users[2].userName);
+  if (users) {
+    res.send({ users });
+  } else {
+    next();
+  }
+});
+
 userRouter.post(
   "/token",
   validateUserNameAndPassword,

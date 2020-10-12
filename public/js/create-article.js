@@ -7,6 +7,9 @@ createArticle.addEventListener("submit", async (e) => {
   const body = formData.get("body");
   const claps = 0;
   const userId = localStorage.getItem("MEDIUM_USER_ID");
+  const peopleList = await fetch("/users");
+  const actualPeople = await peopleList.json();
+  console.log(actualPeople[0]);
   const data = { title, body, claps, userId };
 
   try {
