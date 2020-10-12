@@ -45,7 +45,7 @@ userRouter.post(
   validateUserName,
   validateEmailAndPassword,
   asyncHandler(async (req, res, next) => {
-    const { userName, email, password, confirmedPassword } = req.body;
+    const { userName, email, password, bio, confirmedPassword } = req.body;
     console.log(email);
     if (password !== confirmedPassword) {
       const err = new Error("Sign Up Failed");
@@ -56,7 +56,7 @@ userRouter.post(
       return next(err);
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({ userName, email, hashedPassword });
+    const user = await User.create({ userName, bio, email, hashedPassword });
 
     const token = getUserToken(user);
     res.status(201).json({
