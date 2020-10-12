@@ -29,10 +29,7 @@ var content = {
       }
       const userList = await res.json();
       const usersArr = userList.usersArr;
-<<<<<<< HEAD
       let count = 0;
-=======
->>>>>>> 501adb8cf0786423f4c8ccf03ff9be6c515a8a46
 
       usersArr.forEach((userobj) => {
         if (count === 5) {
@@ -42,7 +39,6 @@ var content = {
         const liEle = document.createElement("ul");
         let name = userobj.userName;
         let id = userobj.userId;
-<<<<<<< HEAD
         userLink.setAttribute("href", `/users/profile/${id}`);
         liEle.innerHTML = `<img src="https://picsum.photos/id/${content.randomNum(
           100
@@ -51,14 +47,6 @@ var content = {
         suggestBox.appendChild(userLink);
         count++;
       });
-=======
-        userLink.setAttribute("href", `/users/profile/${id}`)
-        liEle.innerHTML = `<img id="circles" src="https://picsum.photos/id/${content.randomNum(100)}/25/25">${name}<button class="followButton">Follow</button>`;
-        userLink.appendChild(liEle);
-        suggestBox.appendChild(userLink);
-      })
-
->>>>>>> 501adb8cf0786423f4c8ccf03ff9be6c515a8a46
     } catch (err) {
       console.log(err);
     }
@@ -288,8 +276,8 @@ var content = {
       link.addEventListener("click", async (e) => {
         console.log(e.target.id);
         window.location.href = `/users/profile/${e.target.id}`;
-      })
-    })
+      });
+    });
   },
 
   following: async () => {
