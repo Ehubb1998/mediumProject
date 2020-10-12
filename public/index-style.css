@@ -85,7 +85,8 @@
 }
 
 .content__users--B {
-  border: 0.5px solid gray;
+  overflow:hidden;
+  /* border: 0.5px solid gray; */
   height: 480px;
 }
 
