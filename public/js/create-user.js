@@ -1,4 +1,5 @@
 const signUpForm = document.querySelector(".create-user-form");
+
 const userField = document.getElementById("userField");
 const bioField = document.getElementById("bioField");
 const emailField = document.getElementById("emailField");
@@ -22,8 +23,8 @@ signUpForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const confirmedPassword = formData.get("confirmedPassword");
   const bio = formData.get("bio");
-  const body = { email, password, userName, bio, confirmedPassword };
-  // console.log(confirmedPassword);
+  const body = { userName, email, password, confirmedPassword, bio };
+
   try {
     const res = await fetch("/users", {
       method: "POST",

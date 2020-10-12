@@ -17,7 +17,6 @@
   width: 100px;
   height: 33px;
   margin: auto;
-  margin-top: 30px;
   color: white;
   background-color: black;
   border-radius: 4px;
@@ -25,6 +24,8 @@
   outline: none;
   transition-duration: 0.4s;
   margin-right: 5px;
+  margin-left: 0;
+  margin-top: 10px;
 }
 
 .signUpButtons button:hover {

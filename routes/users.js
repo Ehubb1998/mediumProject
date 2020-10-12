@@ -62,7 +62,9 @@ userRouter.post(
   validateUserName,
   validateEmailAndPassword,
   asyncHandler(async (req, res, next) => {
-    const { userName, email, password, bio, confirmedPassword } = req.body;
+
+    const { userName, email, password, confirmedPassword, bio } = req.body;
+
     console.log(email);
     if (password !== confirmedPassword) {
       const err = new Error("Sign Up Failed");
@@ -73,7 +75,9 @@ userRouter.post(
       return next(err);
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({ userName, bio, email, hashedPassword });
+
+    const user = await User.create({ userName, email, hashedPassword, bio });
+
 
     const token = getUserToken(user);
     res.status(201).json({
@@ -82,7 +86,6 @@ userRouter.post(
     });
   })
 );
-
 
 const passwordVali = function (password, user) {
   const result = user.validatePassword(password);
@@ -125,7 +128,6 @@ userRouter.post(
   })
 );
 
-
 userRouter.get("/:id", requireAuth, async (req, res, next) => {
   const user = await User.findOne({
     where: {
@@ -139,8 +141,6 @@ userRouter.get("/:id", requireAuth, async (req, res, next) => {
     next();
   }
 });
-
-
 
 // Public Data for User Information (Ask JM about getting rid of HashedPass)
 userRouter.get("/publicinfo/:id", async (req, res, next) => {
@@ -157,19 +157,22 @@ userRouter.get("/publicinfo/:id", async (req, res, next) => {
   }
 });
 
-userRouter.get("/profile/:id", asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({
-    where: {
-      id: req.params.id,
-    },
-    include: 'Articles'
-  });
+userRouter.get(
+  "/profile/:id",
+  asyncHandler(async (req, res, next) => {
+    const user = await User.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: "Articles",
+    });
 
-  if (user) {
-    res.render("profile-page", { user } );
-  } else {
-    next();
-  }
-}));
+    if (user) {
+      res.render("profile-page", { user });
+    } else {
+      next();
+    }
+  })
+);
 
 module.exports = userRouter;
