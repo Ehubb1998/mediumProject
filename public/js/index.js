@@ -51,6 +51,7 @@ var app = {
     document.querySelectorAll(".login").forEach((ele) => {
       ele.classList.add("unauthorized");
     });
+    document.getElementById("log-out").classList.remove("unauthorized");
   },
 
   logOut: () => {
@@ -67,8 +68,8 @@ var app = {
         "href",
         `http://localhost:8080/users/profile/${userId}`
       );
-    })
-  }
+    });
+  },
 };
 
 document.addEventListener("DOMContentLoaded", async () => app.init());
