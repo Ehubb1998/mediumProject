@@ -36,6 +36,7 @@ var content = {
           return;
         }
         const userLink = document.createElement("a");
+        userLink.classList.add("suggestedUserClass");
         const liEle = document.createElement("ul");
         let name = userobj.userName;
         let id = userobj.userId;
