@@ -225,10 +225,15 @@ var content = {
     // console.log(followButtons);
     followButtons.forEach((button) => {
       button.addEventListener("click", async (e) => {
+        if (e.target.className === "followButtonClicked") {
+          button.classList.remove("followButtonClicked");
+          button.classList.add("followButton");
+          return;
+        }
         const userId = localStorage.getItem("MEDIUM_USER_ID");
         const authorId = e.target.id;
         console.log(authorId);
-
+        button.className = "followButtonClicked";
         try {
           const res = await fetch(`/users/${authorId}/addFollow`, {
             method: "POST",
