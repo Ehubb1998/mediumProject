@@ -7,8 +7,10 @@
 
 .create-user-form {
   margin-top: 50px;
+  width: 400px;
   display: flex;
   flex-direction: column;
+  margin-top: -20px;
 }
 
 .create-user-form button {
@@ -33,5 +35,5 @@
 
 .form-container img {
   width: 400px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
