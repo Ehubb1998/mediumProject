@@ -59,8 +59,6 @@ var content = {
         );
         image.setAttribute("alt", "sorry blind people.");
         const button = content.followButton(main.userId);
-        // console.log(button);
-        // button.addEventListener("click", () => content.following(id))
         name.appendChild(button);
         slot.appendChild(divA);
         slot.appendChild(divM);
