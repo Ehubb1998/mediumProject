@@ -139,6 +139,7 @@ var content = {
 
         const name = document.createElement("h5");
         name.textContent = author.userName;
+        name.setAttribute("id", main.userId);
         const title = document.createElement("h3");
         title.textContent = main.title;
         const image = document.createElement("img");
@@ -176,6 +177,7 @@ var content = {
 
         const name = document.createElement("h4");
         name.textContent = author.userName;
+        name.setAttribute("id", main.userId);
         const title = document.createElement("h2");
         title.textContent = main.title;
         const image = document.createElement("img");
