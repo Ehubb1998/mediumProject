@@ -85,9 +85,15 @@
 }
 
 .content__users--B {
-  overflow:hidden;
-  /* border: 0.5px solid gray; */
   height: 480px;
+}
+
+.content__users--B h5 {
+  padding-left: 23px;
+}
+
+.content__users--B img {
+  border-radius: 50%;
 }
 
 .trendingIcon img {
@@ -349,3 +355,4 @@
   color: black;
   border: 1px solid black;
 }
+
