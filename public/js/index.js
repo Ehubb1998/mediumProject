@@ -65,7 +65,7 @@ var app = {
       const userId = localStorage.getItem("MEDIUM_USER_ID");
       profileLink.setAttribute(
         "href",
-        `http://localhost:8080/users/profile/${userId}`
+        `/users/profile/${userId}`
       );
     });
   },
