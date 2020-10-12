@@ -20,7 +20,6 @@ var app = {
 
       const data = await res.json();
       const user = data.user.userName;
-      console.log(user);
       if (!res.ok) {
         throw res;
       } else {
@@ -66,7 +65,7 @@ var app = {
       const userId = localStorage.getItem("MEDIUM_USER_ID");
       profileLink.setAttribute(
         "href",
-        `http://localhost:8080/users/profile/${userId}`
+        `/users/profile/${userId}`
       );
     });
   },

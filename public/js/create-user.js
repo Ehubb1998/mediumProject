@@ -1,11 +1,10 @@
 const signUpForm = document.querySelector(".create-user-form");
+
 const userField = document.getElementById("userField");
 const bioField = document.getElementById("bioField");
 const emailField = document.getElementById("emailField");
 const passwordField = document.getElementById("passwordField");
 const cpField = document.getElementById("cpField");
-
-
 
 demoButton.addEventListener("click", (e) => {
   userField.value = "Tom2020";
@@ -22,13 +21,12 @@ signUpForm.addEventListener("submit", async (e) => {
   const userName = formData.get("userName");
   const email = formData.get("email");
   const password = formData.get("password");
-  const bio = formData.get("bio");
-
   const confirmedPassword = formData.get("confirmedPassword");
-  const body = { email, password, userName, bio, confirmedPassword };
-  // console.log(confirmedPassword);
+  const bio = formData.get("bio");
+  const body = { userName, email, password, confirmedPassword, bio };
+
   try {
-    const res = await fetch("http://localhost:8080/users", {
+    const res = await fetch("/users", {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
@@ -42,7 +40,7 @@ signUpForm.addEventListener("submit", async (e) => {
       token,
       user: { id },
     } = await res.json();
-    
+
     localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
     localStorage.setItem("MEDIUM_USER_ID", id);
 
@@ -67,7 +65,7 @@ signUpForm.addEventListener("submit", async (e) => {
       console.log(errors);
       if (errors && Array.isArray(errors)) {
         errorsHTML = errors.map((message) => {
-          `<li>${message}</li>`
+          `<li>${message}</li>`;
         });
         invalidCred.setAttribute("style", "font-size: 20px");
         for (let i = 0; i < errorsHTML.length; i++) {
@@ -82,7 +80,6 @@ signUpForm.addEventListener("submit", async (e) => {
         signUpErr.appendChild(invalidCred2);
         // console.log(errDiv);
       }
-
     }
   }
 });

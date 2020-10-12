@@ -39,13 +39,32 @@ const validateUserNameAndPassword = [
     .withMessage("Please provide a valid Password"),
 ];
 
+userRouter.get("/userList", asyncHandler(async (req, res) => {
+  const users = await User.findAll();
+  // const userList = user.json();
+  // const userName = userList.userName;
+  // console.log(users);
+  const usersArr = [];
+  users.forEach((user) => {
+    const userName = user.userName;
+    const userId = user.id;
+    usersArr.push({userName, userId});
+  });
+  // console.log(usersArr);
+  res.send({
+    usersArr
+  });
+}));
+
 userRouter.post(
   "/",
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
   asyncHandler(async (req, res, next) => {
-    const { userName, email, password, confirmedPassword } = req.body;
+
+    const { userName, email, password, confirmedPassword, bio } = req.body;
+
     console.log(email);
     if (password !== confirmedPassword) {
       const err = new Error("Sign Up Failed");
@@ -56,7 +75,9 @@ userRouter.post(
       return next(err);
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({ userName, email, hashedPassword });
+
+    const user = await User.create({ userName, email, hashedPassword, bio });
+
 
     const token = getUserToken(user);
     res.status(201).json({
@@ -65,7 +86,6 @@ userRouter.post(
     });
   })
 );
-
 
 const passwordVali = function (password, user) {
   const result = user.validatePassword(password);
@@ -108,7 +128,6 @@ userRouter.post(
   })
 );
 
-
 userRouter.get("/:id", requireAuth, async (req, res, next) => {
   const user = await User.findOne({
     where: {
@@ -122,8 +141,6 @@ userRouter.get("/:id", requireAuth, async (req, res, next) => {
     next();
   }
 });
-
-
 
 // Public Data for User Information (Ask JM about getting rid of HashedPass)
 userRouter.get("/publicinfo/:id", async (req, res, next) => {
@@ -140,19 +157,22 @@ userRouter.get("/publicinfo/:id", async (req, res, next) => {
   }
 });
 
-userRouter.get("/profile/:id", asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({
-    where: {
-      id: req.params.id,
-    },
-    include: 'Articles'
-  });
+userRouter.get(
+  "/profile/:id",
+  asyncHandler(async (req, res, next) => {
+    const user = await User.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: "Articles",
+    });
 
-  if (user) {
-    res.render("profile-page", { user } );
-  } else {
-    next();
-  }
-}));
+    if (user) {
+      res.render("profile-page", { user });
+    } else {
+      next();
+    }
+  })
+);
 
 module.exports = userRouter;

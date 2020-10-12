@@ -3,6 +3,7 @@ extends layout.pug
 block content
   body
     include includes/navigation
+    include includes/scripts
     .pPoutermost
       .pPbanner
         .pPbannerContent
@@ -20,12 +21,12 @@ block content
           .pParticlesContainer
               each article in user.Articles
                   .pParticleContainer
-                      a.pPlink(href=`http://localhost:8080/articles/view/${article.id}`)
+                      a.pPlink(href=`/articles/view/${article.id}`)
                           h1.pPtitle= article.title
                           .pPdate #{article.createdAt}
                           .pPclaps #{article.claps} Claps
                       .pPoverflowDiv
                           h5.pParticle= article.body
-                          a.pPreadMore(href=`http://localhost:8080/articles/${article.id}`) Read More
-  
+                          a.pPreadMore(href=`/articles/view/${article.id}`) Read More
+
   script(src="/js/profile.js")
