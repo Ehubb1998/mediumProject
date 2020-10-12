@@ -8,6 +8,8 @@ var content = {
     await content.articleBox3();
     await content.suggestedUsers();
     content.following();
+    content.linking();
+    //console.log(document.querySelectorAll(".followButton"));
   },
 
   suggestedUsers: async () => {
@@ -25,7 +27,7 @@ var content = {
       }
       const userList = await res.json();
       const usersArr = userList.usersArr;
-     
+
       usersArr.forEach((userobj) => {
         console.log(userobj);
         const userLink = document.createElement("a");
@@ -37,7 +39,7 @@ var content = {
         userLink.appendChild(liEle);
         suggestBox.appendChild(userLink);
       })
-      
+
     } catch (err) {
       console.log(err);
     }
@@ -57,6 +59,11 @@ var content = {
 
       document.querySelector(".artA__main--title").innerHTML = main.title;
       document.querySelector(".artA__main--author").innerHTML = author.userName;
+
+      document
+        .querySelector(".artA__main--author")
+        .setAttribute("id", main.userId);
+
       document
         .querySelector(".artA__main--author")
         .appendChild(content.followButton(main.userId));
@@ -85,6 +92,7 @@ var content = {
 
         const name = document.createElement("h5");
         name.textContent = author.userName;
+        name.setAttribute("id", main.userId);
         const title = document.createElement("h3");
         title.textContent = main.title;
         const image = document.createElement("img");
@@ -252,6 +260,17 @@ var content = {
     // button.classList.add('test');
     // console.dir(button);
     return button;
+  },
+
+  linking: async () => {
+    const followLinks = document.querySelectorAll("h4, h5");
+    console.log(followLinks);
+    followLinks.forEach((link) => {
+      link.addEventListener("click", async (e) => {
+        console.log(e.target.id);
+        window.location.href = `/users/profile/${e.target.id}`;
+      })
+    })
   },
 
   following: async () => {
