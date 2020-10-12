@@ -5,7 +5,6 @@ var content = {
     await content.trendingArticles();
     await content.articleBox3();
     content.following();
-    console.log(document.querySelectorAll(".followButton"));
   },
 
   mainArticle: async () => {
@@ -174,7 +173,6 @@ var content = {
     //     console.error(err);
     //   }
     // });
-    console.log(document.querySelectorAll(".followButton"));
     //content.following();
   },
 

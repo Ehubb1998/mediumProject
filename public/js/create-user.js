@@ -5,8 +5,6 @@ const emailField = document.getElementById("emailField");
 const passwordField = document.getElementById("passwordField");
 const cpField = document.getElementById("cpField");
 
-
-
 demoButton.addEventListener("click", (e) => {
   userField.value = "Tom2020";
   bioField.innerHTML =
@@ -22,9 +20,8 @@ signUpForm.addEventListener("submit", async (e) => {
   const userName = formData.get("userName");
   const email = formData.get("email");
   const password = formData.get("password");
-  const bio = formData.get("bio");
-
   const confirmedPassword = formData.get("confirmedPassword");
+  const bio = formData.get("bio");
   const body = { email, password, userName, bio, confirmedPassword };
   // console.log(confirmedPassword);
   try {
@@ -67,7 +64,7 @@ signUpForm.addEventListener("submit", async (e) => {
       console.log(errors);
       if (errors && Array.isArray(errors)) {
         errorsHTML = errors.map((message) => {
-          `<li>${message}</li>`
+          `<li>${message}</li>`;
         });
         invalidCred.setAttribute("style", "font-size: 20px");
         for (let i = 0; i < errorsHTML.length; i++) {
@@ -82,7 +79,6 @@ signUpForm.addEventListener("submit", async (e) => {
         signUpErr.appendChild(invalidCred2);
         // console.log(errDiv);
       }
-
     }
   }
 });

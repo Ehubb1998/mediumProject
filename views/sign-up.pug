@@ -6,7 +6,7 @@ block content
 
     div.signUpErr
     div.form-container
-      form.create-user-form
+      form.create-user-form(id="signUpForm")
           h1.new-user-page Sign Up with Medium Today
           label(for="userName") Username
           input(name="userName" id="userField" class="form" type="text" placeHolder="Babe" required)
@@ -17,10 +17,9 @@ block content
           label(for="confirmedPassword") Confirm Password
           input(name="confirmedPassword" id="cpField" class="form" type="password" placeHolder="password" required)
           label(for="bio") Tell us about yourself...
-          textarea(name="bio" id="bioField" class="form" placeHolder="")
-          div
-            button(type="submit" class=".user-submit") Submit
-            button(type="submit" id="demo-login") Demo
+          input(name="bio" id="bioField" class="form" form="signUpForm")
+          button(type="submit" class=".user-submit") Submit
+            //- button(type="submit" id="demo-login") Demo
       img(src="https://www.freevector.com/uploads/vector/preview/28555/People-with-Activity.jpg")
     script(src="/js/create-user.js")
     script(src="/js/index.js")
