@@ -3,6 +3,7 @@ extends layout.pug
 block content
   body
     include includes/navigation
+    include includes/scripts
     .pPoutermost
       .pPbanner
         .pPbannerContent
@@ -27,5 +28,5 @@ block content
                       .pPoverflowDiv
                           h5.pParticle= article.body
                           a.pPreadMore(href=`http://localhost:8080/articles/${article.id}`) Read More
-  
+
   script(src="/js/profile.js")
