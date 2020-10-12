@@ -17,9 +17,13 @@ const validateUserName = check("userName")
   .withMessage("Please provide a valid User Name");
 
 const validateEmailAndPassword = [
-  check("hashedPassword")
+  check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid Password"),
+  check("confirmedPassword")
+    .exists({ checkFalsy: true })
+    .equals("confirmedPassword", "password")
+    .withMessage("Password and Confirmed must match"),
   check("email")
     .exists({ checkFalsy: true })
     .isEmail()
@@ -40,8 +44,17 @@ userRouter.post(
   handleValidationErrors,
   validateUserName,
   validateEmailAndPassword,
-  asyncHandler(async (req, res) => {
-    const { userName, email, password } = req.body;
+  asyncHandler(async (req, res, next) => {
+    const { userName, email, password, confirmedPassword } = req.body;
+    console.log(email);
+    if (password !== confirmedPassword) {
+      const err = new Error("Sign Up Failed");
+      err.status = 401;
+      err.title = "Sign Up failed";
+      err.errors = "Password and Confirmed must match";
+      err.confirm = false;
+      return next(err);
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ userName, email, hashedPassword });
 

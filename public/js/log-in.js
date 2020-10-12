@@ -5,7 +5,6 @@ logInForm.addEventListener("submit", async (e) => {
   const userName = formData.get("userName");
   const password = formData.get("password");
   const body = { userName, password };
-  //console.log(body);
 
   try {
     const res = await fetch("/users/token", {
@@ -25,6 +24,7 @@ logInForm.addEventListener("submit", async (e) => {
 
     localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
     localStorage.setItem("MEDIUM_USER_ID", id);
+    console.log("IT'S THE END OF THE LINE PAL");
     window.location.href = "/";
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
@@ -51,7 +51,7 @@ logInForm.addEventListener("submit", async (e) => {
         const invalidCred = document.createElement("li");
         const mainHeader = document.querySelector(".mainHeader");
         const errDiv = document.querySelector(".errDiv");
-        console.log(mainHeader.length);
+        // console.log(mainHeader.length);
         invalidCred.innerHTML = `${errorJSON.errors}`;
         invalidCred.setAttribute("style", "font-size: 20px");
         errDiv.innerHTML = "";

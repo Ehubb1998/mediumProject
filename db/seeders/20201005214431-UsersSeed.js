@@ -9,6 +9,10 @@ module.exports = {
       "Users",
       [
         {
+          email: "demo@test.com", hashedPassword: bcrypt.hashSync("test"), userName: "Demo", bio: "This is just a demo", createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           userName: faker.internet.userName(),
           email: faker.internet.email(),
           bio: `In west Philadelphia born and raised

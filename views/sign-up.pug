@@ -3,6 +3,9 @@ extends layout.pug
 block content
   body
     include includes/navigation
+
+    div.signUpErr
+    h1.new-user-page Sign Up with Medium Today
     div.form-container
       form.create-user-form
           h1.new-user-page Sign Up with Medium Today
@@ -13,7 +16,8 @@ block content
           label(for="password") Password
           input(name="password" id="passwordField" class="form" type="password" placeHolder="password" required)
           label(for="confirmedPassword") Confirm Password
-          input(name="confirmedPassword" id="cpField" class="form" type="password" placeHolder="password" required)
+          input(name="confirmedPassword" id="cpField" class="form" type="password" placeHolder="password" required)          
+        div#button
           label(for="bio") Tell us about yourself...
           textarea(name="bio" id="bioField" class="form" placeHolder="")
           div

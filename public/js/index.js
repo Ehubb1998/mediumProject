@@ -20,6 +20,7 @@ var app = {
 
       const data = await res.json();
       const user = data.user.userName;
+      console.log(user);
       if (!res.ok) {
         throw res;
       } else {

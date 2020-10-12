@@ -33,23 +33,16 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  // console.log(err);
+  console.log("I'm here");
+  console.log(err);
   res.status(err.status || 500);
   const errMsg = err.errors;
+
+  res.json({
+    title: err.title,
+    errors: errMsg,
+  });
   console.log(errMsg);
-  if (err.user = false) {
-    res.json({
-      title: err.title,
-      errors: errMsg,
-      user: false
-    });
-  } else {
-    res.json({
-      title: err.title,
-      errors: errMsg,
-      password: false
-    });
-  }
 });
 
 module.exports = app;
