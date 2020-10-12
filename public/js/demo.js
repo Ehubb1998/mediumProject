@@ -2,7 +2,7 @@ const demoButton = document.querySelector(".demoButton");
 demoButton.addEventListener("click", async (e) => {
     const loginDemo = async () => {
         try {
-            const res = await fetch("http://localhost:8080/users/token", {
+            const res = await fetch("/users/token", {
                 method: "POST",
                 body: JSON.stringify({ userName: "Demo", password: "test" }),
                 headers: {
@@ -16,11 +16,11 @@ demoButton.addEventListener("click", async (e) => {
                 token,
                 user: { id },
             } = await res.json();
-    
+
             localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
             localStorage.setItem("MEDIUM_USER_ID", id);
             window.location.href = "/";
-    
+
         } catch {
             console.log(err);
         }
