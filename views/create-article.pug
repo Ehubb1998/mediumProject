@@ -5,14 +5,10 @@ block content
     include includes/navigation
     div.form-container
       form.create-article-form
-
+        button(type="submit" class="storyBtn") Publish
         div
-          input(name="title" class="form" type="text" placeHolder="Title" required)
-
-        div
-          textarea(name="body" class="form" placeHolder="Tell your story." required)
-
-        div#button
-          button(type="submit" class=".user-submit") Publish
-  script(src="/js/create-article.js")
-  script(src="/js/index.js")
+          textarea(id="storyTitle" name="title" class="form" type="text" placeHolder="Title" required)
+        div.cursor
+          textarea(id="storyText" name="body" class="form" placeHolder="Tell your story..." required)
+          i
+  include includes/scripts

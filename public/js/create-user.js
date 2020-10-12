@@ -5,6 +5,8 @@ const emailField = document.getElementById("emailField");
 const passwordField = document.getElementById("passwordField");
 const cpField = document.getElementById("cpField");
 
+
+
 demoButton.addEventListener("click", (e) => {
   userField.value = "Tom2020";
   bioField.innerHTML =
@@ -21,6 +23,7 @@ signUpForm.addEventListener("submit", async (e) => {
   const email = formData.get("email");
   const password = formData.get("password");
   const bio = formData.get("bio");
+
   const confirmedPassword = formData.get("confirmedPassword");
   const body = { email, password, userName, bio, confirmedPassword };
   // console.log(confirmedPassword);
@@ -39,7 +42,7 @@ signUpForm.addEventListener("submit", async (e) => {
       token,
       user: { id },
     } = await res.json();
-
+    
     localStorage.setItem("MEDIUM_ACCESS_TOKEN", token);
     localStorage.setItem("MEDIUM_USER_ID", id);
 
@@ -79,6 +82,7 @@ signUpForm.addEventListener("submit", async (e) => {
         signUpErr.appendChild(invalidCred2);
         // console.log(errDiv);
       }
+
     }
   }
 });

@@ -1,4 +1,4 @@
-const logInForm = document.querySelector(".log-in-form");
+var logInForm = document.querySelector(".log-in-form");
 logInForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(logInForm);
@@ -7,7 +7,7 @@ logInForm.addEventListener("submit", async (e) => {
   const body = { userName, password };
 
   try {
-    const res = await fetch("http://localhost:8080/users/token", {
+    const res = await fetch("/users/token", {
       method: "POST",
       body: JSON.stringify(body),
       headers: {

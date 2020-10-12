@@ -1,6 +1,6 @@
 const express = require("express");
 const articleRouter = express.Router();
-const { asyncHandler } = require("../utils");
+const { asyncHandler, handleValidationErrors } = require("../utils");
 const db = require("../db/models");
 const { Article, User, Comment } = db;
 const { check, validationResult } = require("express-validator");
@@ -26,10 +26,12 @@ const articleValidations = [
   check("title")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a title.")
-    .isLength({ max: 100 }),
+    .isLength({ max: 50 })
+    .withMessage("Title must not exceed 50 characters."),
   check("body")
     .exists({ checkFalsy: true })
     .withMessage("Please provide article content."),
+  handleValidationErrors,
 ];
 
 const articleNotFoundError = (articleId) => {
@@ -59,6 +61,25 @@ articleRouter.get(
   })
 );
 
+// Renders Invidual Article View
+articleRouter.get(
+  "/view/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const id = parseInt(req.params.id, 10);
+    const article = await Article.findByPk(id, {
+      include: { model: Comment, as: "comments", include: "User" },
+    });
+    if (article === null) {
+      next(articleNotFoundError(article));
+    } else {
+      res.render("article-view", {
+        article,
+        comments: article.comments,
+      });
+    }
+  })
+);
+
 articleRouter.post(
   "/",
   requireAuth,
@@ -78,24 +99,6 @@ articleRouter.post(
 articleRouter.get("/new", (req, res) => {
   res.render("create-article");
 });
-
-// articleRouter.get(
-//   "/:id",
-//   asyncHandler(async (req, res) => {
-//     const article = await Article.findByPk(req.params.id);
-//     const comments = await Comment.findAll({
-//       where: {
-//         articleId: req.params.id,
-//       },
-//     });
-
-//     res.render("create-article", {
-//       title: article.title,
-//       body: article.body,
-//       comments: comments,
-//     });
-//   })
-// );
 
 articleRouter.put(
   "/:id(\\d+)",

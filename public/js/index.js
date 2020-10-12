@@ -1,4 +1,4 @@
-const app = {
+var app = {
   init: () => {
     app.checkAuth();
     app.logOut();
@@ -7,7 +7,7 @@ const app = {
   checkAuth: async () => {
     try {
       const res = await fetch(
-        `http://localhost:8080/users/${localStorage.getItem("MEDIUM_USER_ID")}`,
+        `/users/${localStorage.getItem("MEDIUM_USER_ID")}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem(
@@ -60,4 +60,4 @@ const app = {
   },
 };
 
-window.addEventListener("DOMContentLoaded", async () => app.init());
+document.addEventListener("DOMContentLoaded", async () => app.init());

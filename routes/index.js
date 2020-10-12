@@ -14,12 +14,12 @@ router.get("/coming-soon", (req, res) => {
   res.render("coming-soon");
 });
 
-// router.get("/create", (req, res) => {
-//   res.render("create");
-// });
+router.get("/create", (req, res) => {
+  res.render("create-article");
+});
 
-// router.get("/profile", (req, res) => {
-//   res.render("profile");
-// });
+router.get("/testpage", (req, res) => {
+  res.render("article-view");
+});
 
 module.exports = router;
