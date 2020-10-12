@@ -8,6 +8,8 @@ var content = {
     await content.articleBox3();
     await content.suggestedUsers();
     content.following();
+    content.linking();
+    //console.log(document.querySelectorAll(".followButton"));
   },
 
   suggestedUsers: async () => {
@@ -27,7 +29,10 @@ var content = {
       }
       const userList = await res.json();
       const usersArr = userList.usersArr;
+<<<<<<< HEAD
       let count = 0;
+=======
+>>>>>>> 501adb8cf0786423f4c8ccf03ff9be6c515a8a46
 
       usersArr.forEach((userobj) => {
         if (count === 5) {
@@ -37,6 +42,7 @@ var content = {
         const liEle = document.createElement("ul");
         let name = userobj.userName;
         let id = userobj.userId;
+<<<<<<< HEAD
         userLink.setAttribute("href", `/users/profile/${id}`);
         liEle.innerHTML = `<img src="https://picsum.photos/id/${content.randomNum(
           100
@@ -45,6 +51,14 @@ var content = {
         suggestBox.appendChild(userLink);
         count++;
       });
+=======
+        userLink.setAttribute("href", `/users/profile/${id}`)
+        liEle.innerHTML = `<img id="circles" src="https://picsum.photos/id/${content.randomNum(100)}/25/25">${name}<button class="followButton">Follow</button>`;
+        userLink.appendChild(liEle);
+        suggestBox.appendChild(userLink);
+      })
+
+>>>>>>> 501adb8cf0786423f4c8ccf03ff9be6c515a8a46
     } catch (err) {
       console.log(err);
     }
@@ -64,6 +78,11 @@ var content = {
 
       document.querySelector(".artA__main--title").innerHTML = main.title;
       document.querySelector(".artA__main--author").innerHTML = author.userName;
+
+      document
+        .querySelector(".artA__main--author")
+        .setAttribute("id", main.userId);
+
       document
         .querySelector(".artA__main--author")
         .appendChild(content.followButton(main.userId));
@@ -92,6 +111,7 @@ var content = {
 
         const name = document.createElement("h5");
         name.textContent = author.userName;
+        name.setAttribute("id", main.userId);
         const title = document.createElement("h3");
         title.textContent = main.title;
         const image = document.createElement("img");
@@ -259,6 +279,17 @@ var content = {
     // button.classList.add('test');
     // console.dir(button);
     return button;
+  },
+
+  linking: async () => {
+    const followLinks = document.querySelectorAll("h4, h5");
+    console.log(followLinks);
+    followLinks.forEach((link) => {
+      link.addEventListener("click", async (e) => {
+        console.log(e.target.id);
+        window.location.href = `/users/profile/${e.target.id}`;
+      })
+    })
   },
 
   following: async () => {
